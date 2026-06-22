@@ -804,7 +804,7 @@ export default function SpringsClient() {
             </div>
             <div className="rounded-sm overflow-hidden border border-[#E5E7EB] min-h-[280px] md:min-h-[320px]">
               <iframe
-                src="https://maps.google.com/maps?q=Art+of+Living+International+Centre,+Kanakapura+Road,+Bengaluru,+Karnataka&output=embed&z=14"
+                src="https://maps.google.com/maps?q=SATTVA+SPRINGS,+129,+Badamanavarathekaval,+Bengaluru,+Karnataka+560082&ftid=0x3bae4100656ade8b:0xc2bb9b7a49219a94&output=embed&z=16"
                 width="100%"
                 height="100%"
                 style={{ border: 0, minHeight: 280, display: 'block' }}
