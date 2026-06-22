@@ -197,25 +197,12 @@ function EnquiryForm({ source = 'hero', ctaLabel = 'Request a Callback', compact
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, source }),
       })
-      setStatus(res.ok ? 'done' : 'error')
+      if (res.ok) {
+        window.location.href = `/sattva-springs/thank-you?name=${encodeURIComponent(form.name)}`
+      } else {
+        setStatus('error')
+      }
     } catch { setStatus('error') }
-  }
-
-  if (status === 'done') {
-    return (
-      <div className="py-8 text-center animate-fade-in-up">
-        <div className="w-12 h-12 rounded-full bg-[#2d3791]/10 flex items-center justify-center mx-auto mb-3">
-          <svg className="w-6 h-6 text-[#2d3791]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <p className="font-semibold text-[#1C1C2E]">Thank you, {form.name || 'there'}.</p>
-        <p className="text-sm text-[#6B7280] mt-1">Our team will reach you within the hour.</p>
-        <a href={WHATSAPP} target="_blank" rel="noreferrer" className="mt-4 inline-flex items-center gap-2 text-sm text-[#2d3791] hover:underline">
-          Or connect on WhatsApp →
-        </a>
-      </div>
-    )
   }
 
   const field = 'w-full border border-[#E5E7EB] rounded-sm px-4 py-3 text-sm text-[#1C1C2E] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#2d3791] transition-colors bg-white'
