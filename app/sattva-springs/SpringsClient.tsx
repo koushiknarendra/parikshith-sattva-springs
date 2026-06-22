@@ -3,11 +3,10 @@
 import { useState, useEffect, useRef } from 'react'
 
 // ─── REPLACE BEFORE GOING LIVE ──────────────────────────────────────────────
-const PHONE_DISPLAY = '+91 98765 43210'
-const PHONE_LINK    = 'tel:+919876543210'
-const WHATSAPP      = 'https://wa.me/919876543210?text=Hi%2C%20I%27m%20interested%20in%20Sattva%20Springs.%20Please%20share%20the%20brochure.'
+const PHONE_DISPLAY = '+91 93803 22553'
+const PHONE_LINK    = 'tel:+919380322553'
+const WHATSAPP      = 'https://wa.me/919380322553?text=Hi%2C%20I%27m%20interested%20in%20Sattva%20Springs.%20Please%20share%20the%20brochure.'
 const RERA          = 'PRM/KA/RERA/1251/310/PR/240724/006948'
-const PRICE_VALID_UNTIL = new Date('2026-07-15T23:59:59').getTime()
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const VILLA_TYPES = [
@@ -59,7 +58,7 @@ const TESTIMONIALS = [
     role: 'Physicians',
     location: 'JP Nagar',
     stars: 5,
-    text: "The proximity to the Art of Living campus was a significant factor for us. We're happy with the RERA compliance and the transparency around the construction timeline. The channel partner team was patient, professional, and never pushy.",
+    text: "The proximity to the Art of Living campus was a significant factor for us. We're happy with the RERA compliance and the transparency around the construction timeline. The team at Sattva Constructions was patient, professional, and never pushy.",
   },
   {
     name: 'Vijay S.',
@@ -105,8 +104,8 @@ const FAQS = [
     a: 'All-inclusive prices range from ₹5.16 Cr (Type C) to ₹7.00 Cr (Type F). We share detailed cost sheets, payment plans, and home loan options on request.' },
   { q: 'When is possession expected?',
     a: 'RERA scheduled possession is September 2027. Construction is approximately 50% complete as of mid-2026 and progressing on schedule.' },
-  { q: 'Is there an additional cost for buying through a channel partner?',
-    a: 'None. Authorised channel partners offer the same pricing as the developer — the buyer pays nothing extra. What you gain is personalised advisory, documentation support, home loan facilitation, and dedicated post-booking service.' },
+  { q: 'Is there any additional cost when buying through Sattva Constructions?',
+    a: 'None. We offer the same pricing as the developer — the buyer pays nothing extra. What you gain is personalised advisory, documentation support, home loan facilitation, and dedicated post-booking service.' },
 ]
 
 // ─── BUILDING ICON ───────────────────────────────────────────────────────────
@@ -131,46 +130,6 @@ function Stars({ count }: { count: number }) {
   )
 }
 
-// ─── COUNTDOWN ───────────────────────────────────────────────────────────────
-function Countdown() {
-  const [t, setT] = useState({ d: 0, h: 0, m: 0, s: 0 })
-
-  useEffect(() => {
-    const tick = () => {
-      const diff = Math.max(0, PRICE_VALID_UNTIL - Date.now())
-      setT({
-        d: Math.floor(diff / 86400000),
-        h: Math.floor((diff % 86400000) / 3600000),
-        m: Math.floor((diff % 3600000) / 60000),
-        s: Math.floor((diff % 60000) / 1000),
-      })
-    }
-    tick()
-    const id = setInterval(tick, 1000)
-    return () => clearInterval(id)
-  }, [])
-
-  const unit = (v: number, l: string) => (
-    <span className="flex flex-col items-center">
-      <span className="font-mono font-bold text-base text-white leading-none" suppressHydrationWarning>
-        {String(v).padStart(2, '0')}
-      </span>
-      <span className="text-[9px] text-white/40 uppercase tracking-wider mt-0.5">{l}</span>
-    </span>
-  )
-
-  return (
-    <span className="flex items-end gap-3">
-      {unit(t.d, 'days')}
-      <span className="text-white/30 font-light mb-0.5">:</span>
-      {unit(t.h, 'hrs')}
-      <span className="text-white/30 font-light mb-0.5">:</span>
-      {unit(t.m, 'min')}
-      <span className="text-white/30 font-light mb-0.5">:</span>
-      {unit(t.s, 'sec')}
-    </span>
-  )
-}
 
 // ─── TOAST NOTIFICATIONS ─────────────────────────────────────────────────────
 function ToastNotifications({ onEnquire }: { onEnquire: () => void }) {
@@ -347,7 +306,7 @@ export default function SpringsClient() {
             </div>
             <div>
               <p className="font-bold text-sm text-[#1C1C2E] leading-none">Sattva Constructions</p>
-              <p className="text-[10px] text-[#9CA3AF] leading-none mt-0.5 tracking-wide">Authorised Channel Partner · Sattva Group</p>
+              <p className="text-[10px] text-[#9CA3AF] leading-none mt-0.5 tracking-wide">Sattva Group · Kanakapura Road, Bangalore</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -371,29 +330,17 @@ export default function SpringsClient() {
 
         {/* Mobile background — property image with heavy overlay */}
         <div className="md:hidden absolute inset-0 z-0">
-          <img src="/images/elevation.jpg" alt="" className="w-full h-full object-cover object-center" />
+          <img src="/images/pool.jpg" alt="" className="w-full h-full object-cover object-center" />
           <div className="absolute inset-0 bg-[#0e1830]/88" />
         </div>
 
         {/* LEFT: dark info panel */}
         <div className="relative z-10 w-full md:w-[44%] bg-[#0e1830]/0 md:bg-[#0e1830] flex flex-col justify-between px-8 py-10 md:px-14 md:py-14">
 
-          {/* Countdown (compact strip at panel top) */}
-          {mounted && (
-            <div className="flex items-center justify-between mb-10 pb-5 border-b border-white/10">
-              <div className="flex items-center gap-2 text-[11px] text-white/50">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#afd23a] shrink-0 animate-pulse" />
-                Pricing valid for
-              </div>
-              <Countdown />
-            </div>
-          )}
-          {!mounted && <div className="mb-10 pb-5 border-b border-white/10 h-[38px]" />}
-
           {/* Main content */}
           <div className="flex-1 flex flex-col justify-center">
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#afd23a] mb-5">
-              By Salarpuria Sattva Group
+              By Sattva Group
             </p>
             <h1 className="text-[56px] md:text-[68px] font-black text-white leading-none mb-4"
               style={{ letterSpacing: '-0.03em' }}>
@@ -420,17 +367,6 @@ export default function SpringsClient() {
               ))}
             </div>
 
-            {/* CTA pair */}
-            <div className="flex gap-3">
-              <button onClick={scrollToForm}
-                className="flex-1 bg-[#2d3791] hover:bg-[#232d7a] text-white font-semibold py-4 rounded-sm text-sm tracking-wide transition-colors">
-                Schedule a Visit
-              </button>
-              <a href={WHATSAPP} target="_blank" rel="noreferrer"
-                className="flex-1 border border-white/25 hover:border-white/50 text-white text-center font-medium py-4 rounded-sm text-sm transition-colors">
-                Get Brochure
-              </a>
-            </div>
           </div>
 
           {/* Phone CTA bar */}
@@ -454,8 +390,8 @@ export default function SpringsClient() {
         {/* RIGHT: property photo — desktop only */}
         <div className="hidden md:block flex-1 relative overflow-hidden">
           <img
-            src="/images/elevation.jpg"
-            alt="Sattva Springs – Villa Elevation, Kanakapura Road"
+            src="/images/pool.jpg"
+            alt="Sattva Springs – Swimming Pool, Kanakapura Road"
             className="absolute inset-0 w-full h-full object-cover object-center"
           />
           {/* Left blend into dark panel */}
@@ -493,15 +429,15 @@ export default function SpringsClient() {
             <div>
               <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Limited Availability</p>
               <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E] mb-4 leading-tight" style={{ letterSpacing: '-0.02em' }}>
-                Schedule a site visit or request a callback
+                Schedule a site visit or get the brochure
               </h2>
               <p className="text-[#6B7280] text-base mb-8">
                 Types C through F are currently open. Our advisor will walk you through floor plans, payment schedules, and home loan options — no sales pressure, just clarity.
               </p>
-              <div className="space-y-3">
+              <div className="space-y-3 mb-8">
                 {[
                   'RERA registered — verify independently at karerait.karnataka.gov.in',
-                  'No extra cost for buying through an authorised channel partner',
+                  'Same pricing as the developer — no extra cost to you',
                   'Home loan pre-approval assistance with 8 major banks',
                 ].map(t => (
                   <div key={t} className="flex items-start gap-3 text-sm text-[#4B5563]">
@@ -509,6 +445,18 @@ export default function SpringsClient() {
                     {t}
                   </div>
                 ))}
+              </div>
+              <div className="flex gap-3">
+                <a href={PHONE_LINK}
+                  className="flex items-center gap-2 bg-[#2d3791] hover:bg-[#232d7a] text-white font-semibold px-6 py-3.5 rounded-sm text-sm transition-colors">
+                  <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                  Call Now
+                </a>
+                <a href={WHATSAPP} target="_blank" rel="noreferrer"
+                  className="flex items-center gap-2 border border-[#2d3791] text-[#2d3791] hover:bg-[#2d3791] hover:text-white font-semibold px-6 py-3.5 rounded-sm text-sm transition-colors">
+                  <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
+                  WhatsApp
+                </a>
               </div>
             </div>
             <div className="bg-white p-8 border border-[#E5E7EB]" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
@@ -780,10 +728,10 @@ export default function SpringsClient() {
               <div className="flex items-center gap-4 mb-6">
                 <img src="/images/sattva-logo.webp" alt="Sattva Group" className="h-10 object-contain" />
                 <div className="w-px h-10 bg-white/10" />
-                <h2 className="text-2xl md:text-3xl font-black" style={{ letterSpacing: '-0.02em' }}>Salarpuria Sattva Group</h2>
+                <h2 className="text-2xl md:text-3xl font-black" style={{ letterSpacing: '-0.02em' }}>Sattva Group</h2>
               </div>
               <p className="text-white/60 text-sm leading-relaxed mb-4">
-                Established in 1993, Salarpuria Sattva Group is one of India's foremost real estate conglomerates with a 31-year record of on-time delivery across residential, commercial, IT parks, co-living, and warehousing segments.
+                Established in 1993, Sattva Group is one of India's foremost real estate conglomerates with a 31-year record of on-time delivery across residential, commercial, IT parks, co-living, and warehousing segments.
               </p>
               <p className="text-white/60 text-sm leading-relaxed mb-8">
                 The group has consistently ranked among India's top developers and has been recognised at prestigious industry forums for both commercial and residential excellence.
@@ -853,7 +801,7 @@ export default function SpringsClient() {
               <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Contact Us</p>
               <h2 className="text-3xl font-black text-[#1C1C2E] mb-4" style={{ letterSpacing: '-0.02em' }}>Speak with a Property Advisor</h2>
               <p className="text-[#6B7280] text-sm leading-relaxed mb-8">
-                As an authorised channel partner we offer the same pricing as the developer — with no additional cost to you. We provide personalised site visit coordination, complete documentation support, home loan tie-ups, and dedicated relationship management through possession.
+                We offer the same pricing as the developer — with no additional cost to you. We provide personalised site visit coordination, complete documentation support, home loan tie-ups, and dedicated relationship management through possession.
               </p>
               <div className="space-y-4">
                 <a href={PHONE_LINK} className="flex items-center gap-3 text-[#1C1C2E] hover:text-[#2d3791] transition-colors group">
@@ -905,7 +853,7 @@ export default function SpringsClient() {
                 </div>
                 <p className="font-bold text-sm">Sattva Constructions</p>
               </div>
-              <p className="text-[#6B7280] text-xs leading-relaxed">Authorised Channel Partner<br />Salarpuria Sattva Group</p>
+              <p className="text-[#6B7280] text-xs leading-relaxed">Sattva Group · Kanakapura Road, Bangalore</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-[#6B7280] font-semibold mb-3">Project</p>
@@ -921,7 +869,7 @@ export default function SpringsClient() {
           </div>
           <div className="border-t border-white/5 pt-8">
             <p className="text-[11px] text-[#4B5563] leading-relaxed">
-              <strong className="text-[#6B7280]">Disclaimer:</strong> Sattva Constructions is an authorised channel partner of Salarpuria Sattva Group and is not the developer or promoter. All project details, specifications, pricing, and timelines are as provided by the developer and are subject to change without prior notice. Prices are indicative. Prospective buyers are advised to independently verify all information, review RERA filings, and consult qualified legal and financial advisors before making investment decisions. RERA No: {RERA}.
+              <strong className="text-[#6B7280]">Disclaimer:</strong> Sattva Constructions is an authorised channel partner of Sattva Group and is not the developer or promoter. All project details, specifications, pricing, and timelines are as provided by the developer and are subject to change without prior notice. Prices are indicative. Prospective buyers are advised to independently verify all information, review RERA filings, and consult qualified legal and financial advisors before making investment decisions. RERA No: {RERA}.
             </p>
           </div>
         </div>
