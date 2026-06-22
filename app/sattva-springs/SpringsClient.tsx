@@ -329,8 +329,8 @@ export default function SpringsClient() {
               <BuildingIcon className="w-4 h-4 text-white" />
             </div>
             <div>
-              <p className="font-bold text-sm text-[#1C1C2E] leading-none">Sattva Constructions</p>
-              <p className="text-[10px] text-[#9CA3AF] leading-none mt-0.5 tracking-wide">Sattva Group · Kanakapura Road, Bangalore</p>
+              <p className="font-bold text-sm text-[#1C1C2E] leading-none">Sattva Springs</p>
+              <p className="text-[10px] text-[#9CA3AF] leading-none mt-0.5 tracking-wide">By Sattva Group · Kanakapura Road, Bangalore</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
@@ -958,9 +958,9 @@ export default function SpringsClient() {
                 <div className="w-7 h-7 bg-[#2d3791] rounded-sm flex items-center justify-center">
                   <BuildingIcon className="w-3.5 h-3.5 text-white" />
                 </div>
-                <p className="font-bold text-sm">Sattva Constructions</p>
+                <p className="font-bold text-sm">Sattva Springs</p>
               </div>
-              <p className="text-[#6B7280] text-xs leading-relaxed">Sattva Group · Kanakapura Road, Bangalore</p>
+              <p className="text-[#6B7280] text-xs leading-relaxed">By Sattva Group · Kanakapura Road, Bangalore</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-widest text-[#6B7280] font-semibold mb-3">Project</p>
