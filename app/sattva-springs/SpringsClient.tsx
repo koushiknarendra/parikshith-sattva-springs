@@ -366,74 +366,159 @@ export default function SpringsClient() {
         </div>
       </header>
 
-      {/* ── COUNTDOWN STRIP ─────────────────────────────────────────────────── */}
-      {mounted && (
-        <div className="bg-[#0e1830] border-b border-white/5">
-          <div className="max-w-[1200px] mx-auto px-6 py-3 flex flex-wrap items-center justify-center md:justify-between gap-4">
-            <div className="flex items-center gap-2.5 text-xs text-white/60">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#afd23a] shrink-0 animate-pulse" />
-              Introductory launch pricing — only 4 villa types remaining
+      {/* ── HERO ─────────────────────────────────────────────────────────────── */}
+      <section className="relative flex" style={{ minHeight: 'calc(100vh - 68px)' }}>
+
+        {/* Mobile background — property image with heavy overlay */}
+        <div className="md:hidden absolute inset-0 z-0">
+          <img src="/images/elevation.jpg" alt="" className="w-full h-full object-cover object-center" />
+          <div className="absolute inset-0 bg-[#0e1830]/88" />
+        </div>
+
+        {/* LEFT: dark info panel */}
+        <div className="relative z-10 w-full md:w-[44%] bg-[#0e1830]/0 md:bg-[#0e1830] flex flex-col justify-between px-8 py-10 md:px-14 md:py-14">
+
+          {/* Countdown (compact strip at panel top) */}
+          {mounted && (
+            <div className="flex items-center justify-between mb-10 pb-5 border-b border-white/10">
+              <div className="flex items-center gap-2 text-[11px] text-white/50">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#afd23a] shrink-0 animate-pulse" />
+                Pricing valid for
+              </div>
+              <Countdown />
             </div>
-            <Countdown />
-            <button onClick={scrollToForm} className="text-xs font-semibold text-[#afd23a] hover:underline whitespace-nowrap">
-              Register your interest →
-            </button>
+          )}
+          {!mounted && <div className="mb-10 pb-5 border-b border-white/10 h-[38px]" />}
+
+          {/* Main content */}
+          <div className="flex-1 flex flex-col justify-center">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#afd23a] mb-5">
+              By Salarpuria Sattva Group
+            </p>
+            <h1 className="text-[56px] md:text-[68px] font-black text-white leading-none mb-4"
+              style={{ letterSpacing: '-0.03em' }}>
+              SATTVA<br />SPRINGS
+            </h1>
+            <p className="text-white/50 text-sm mb-8 leading-relaxed">
+              Exclusive 4 BHK Row Villas · Kanakapura Road, Bangalore
+            </p>
+
+            <div className="w-12 h-px bg-[#afd23a] mb-8" />
+
+            {/* Spec grid */}
+            <div className="grid grid-cols-2 gap-x-6 gap-y-5 mb-10">
+              {[
+                { label: 'Total Villas', value: '66 Units' },
+                { label: 'Land Area',    value: '5.5 Acres' },
+                { label: 'Villa Size',   value: '2,798 – 3,822 sq ft' },
+                { label: 'Possession',  value: 'Sep 2027' },
+              ].map(s => (
+                <div key={s.label}>
+                  <p className="text-[10px] uppercase tracking-wider text-white/35 mb-1">{s.label}</p>
+                  <p className="text-white font-semibold text-sm">{s.value}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* CTA pair */}
+            <div className="flex gap-3">
+              <button onClick={scrollToForm}
+                className="flex-1 bg-[#2d3791] hover:bg-[#232d7a] text-white font-semibold py-4 rounded-sm text-sm tracking-wide transition-colors">
+                Schedule a Visit
+              </button>
+              <a href={WHATSAPP} target="_blank" rel="noreferrer"
+                className="flex-1 border border-white/25 hover:border-white/50 text-white text-center font-medium py-4 rounded-sm text-sm transition-colors">
+                Get Brochure
+              </a>
+            </div>
+          </div>
+
+          {/* Phone CTA bar */}
+          <div className="mt-8">
+            <a href={PHONE_LINK}
+              className="flex items-center gap-4 bg-[#afd23a] hover:bg-[#9ebe2f] rounded-sm px-5 py-4 transition-colors">
+              <div className="w-10 h-10 rounded-full bg-[#0e1830]/15 flex items-center justify-center shrink-0">
+                <svg className="w-5 h-5 text-[#0e1830]" fill="currentColor" viewBox="0 0 20 20">
+                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                </svg>
+              </div>
+              <div>
+                <p className="text-[10px] font-medium text-[#0e1830]/60 uppercase tracking-wider leading-none mb-1">Call us directly</p>
+                <p className="text-[#0e1830] font-black text-2xl leading-none tracking-wide">{PHONE_DISPLAY}</p>
+              </div>
+            </a>
+            <p className="text-[9px] text-white/20 mt-3 text-center">RERA · {RERA}</p>
           </div>
         </div>
-      )}
 
-      {/* ── HERO ─────────────────────────────────────────────────────────────── */}
-      <section className="relative min-h-[88vh] flex items-center"
-        style={{
-          backgroundImage: `linear-gradient(to right, rgba(14,24,48,0.97) 38%, rgba(14,24,48,0.55) 100%), url('/images/gallery-1.jpg')`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center top',
-        }}>
-        {/* Extra dark overlay for mobile — ensures bg image text never bleeds through */}
-        <div className="absolute inset-0 bg-[#0e1830]/80 md:hidden" />
-        <div className="relative z-10 max-w-[1200px] mx-auto px-6 py-14 md:py-20 w-full">
-          <div className="grid md:grid-cols-[1fr_420px] gap-16 items-center">
-            <div>
-              <div className="flex flex-wrap items-center gap-2 mb-8">
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-[#afd23a] border border-[#afd23a]/40 px-3 py-1 rounded-sm">RERA Registered</span>
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-white/50 border border-white/20 px-3 py-1 rounded-sm">Authorised Channel Partner</span>
-                <span className="text-[10px] font-semibold uppercase tracking-widest text-white/50 border border-white/20 px-3 py-1 rounded-sm">Bank Approved</span>
-              </div>
-              <h1 className="text-[44px] md:text-[72px] font-black text-white leading-none mb-4" style={{ letterSpacing: '-0.03em' }}>
-                Sattva<br />Springs
-              </h1>
-              <div className="flex items-center gap-2 mb-2">
-                <div className="w-6 h-px bg-[#afd23a]" />
-                <p className="text-[#afd23a] text-sm font-medium tracking-wide">By Salarpuria Sattva Group</p>
-              </div>
-              <p className="text-white/60 text-base mb-10">Ultra-Luxury 4 BHK Row Villas · Kanakapura Road, Bangalore</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10 border border-white/10 rounded-sm overflow-hidden mb-10">
-                {[
-                  { v: '66', l: 'Exclusive Villas' },
-                  { v: '5.5 Acres', l: 'Gated Estate' },
-                  { v: '₹5.16 Cr', l: 'Starting Price' },
-                  { v: 'Sep 2027', l: 'Possession' },
-                ].map(s => (
-                  <div key={s.l} className="bg-white/5 px-5 py-4">
-                    <p className="text-white font-bold text-lg leading-none">{s.v}</p>
-                    <p className="text-white/40 text-xs mt-1">{s.l}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="text-white/25 text-xs">RERA No. {RERA}</p>
-            </div>
+        {/* RIGHT: property photo — desktop only */}
+        <div className="hidden md:block flex-1 relative overflow-hidden">
+          <img
+            src="/images/elevation.jpg"
+            alt="Sattva Springs – Villa Elevation, Kanakapura Road"
+            className="absolute inset-0 w-full h-full object-cover object-center"
+          />
+          {/* Left blend into dark panel */}
+          <div className="absolute inset-0 bg-gradient-to-r from-[#0e1830]/40 via-[#0e1830]/10 to-transparent" />
 
-            {/* Hero form */}
-            <div ref={formRef}>
-              <div className="bg-white p-8" style={{ boxShadow: '0 25px 60px rgba(0,0,0,0.35)' }}>
-                <p className="text-xs uppercase tracking-widest text-[#9CA3AF] mb-1">Get in Touch</p>
-                <h2 className="text-lg font-bold text-[#1C1C2E] mb-5">Schedule a Site Visit</h2>
-                <EnquiryForm source="hero" ctaLabel="Request a Callback" />
-              </div>
+          {/* Circular price badge */}
+          <div className="absolute bottom-10 right-10 w-[130px] h-[130px] rounded-full flex flex-col items-center justify-center text-center"
+            style={{ background: '#2d3791', boxShadow: '0 0 0 4px #afd23a, 0 24px 48px rgba(0,0,0,0.5)' }}>
+            <p className="text-[9px] uppercase tracking-wider text-white/55 leading-none mb-1">Starting @</p>
+            <p className="text-[#afd23a] font-black text-[28px] leading-none">₹5.16</p>
+            <p className="text-white font-bold text-xs leading-none mt-1">Crore*</p>
+          </div>
+
+          {/* RERA tag — top right */}
+          <div className="absolute top-6 right-6 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-sm border border-white/10">
+            <p className="text-[9px] uppercase tracking-wider text-white/50 leading-none mb-1">RERA Registered</p>
+            <p className="text-[10px] text-white/80 font-mono leading-none">{RERA.slice(0, 26)}…</p>
+          </div>
+
+          {/* Urgency bar — bottom */}
+          <div className="absolute bottom-0 left-0 right-0 py-5 px-8"
+            style={{ background: 'linear-gradient(to top, rgba(14,24,48,0.75) 0%, transparent 100%)' }}>
+            <div className="flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#afd23a] animate-pulse shrink-0" />
+              <p className="text-white/80 text-sm font-medium">Only 4 villa configurations available — Types C, D, E & F</p>
             </div>
           </div>
         </div>
       </section>
+
+      {/* ── ENQUIRY FORM ─────────────────────────────────────────────────────── */}
+      <div ref={formRef} className="bg-[#F9FAFB] border-b border-[#E5E7EB]">
+        <div className="max-w-[1200px] mx-auto px-6 py-16">
+          <div className="grid md:grid-cols-[1fr_460px] gap-12 items-center">
+            <div>
+              <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Limited Availability</p>
+              <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E] mb-4 leading-tight" style={{ letterSpacing: '-0.02em' }}>
+                Schedule a site visit or request a callback
+              </h2>
+              <p className="text-[#6B7280] text-base mb-8">
+                Types C through F are currently open. Our advisor will walk you through floor plans, payment schedules, and home loan options — no sales pressure, just clarity.
+              </p>
+              <div className="space-y-3">
+                {[
+                  'RERA registered — verify independently at karerait.karnataka.gov.in',
+                  'No extra cost for buying through an authorised channel partner',
+                  'Home loan pre-approval assistance with 8 major banks',
+                ].map(t => (
+                  <div key={t} className="flex items-start gap-3 text-sm text-[#4B5563]">
+                    <span className="w-4 h-4 bg-[#2d3791] text-white rounded-full flex items-center justify-center text-[9px] font-bold shrink-0 mt-0.5">✓</span>
+                    {t}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-white p-8 border border-[#E5E7EB]" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
+              <p className="text-xs uppercase tracking-widest text-[#9CA3AF] mb-1">Get in Touch</p>
+              <h3 className="text-lg font-bold text-[#1C1C2E] mb-5">Request a Callback</h3>
+              <EnquiryForm source="hero" ctaLabel="Request a Callback" />
+            </div>
+          </div>
+        </div>
+      </div>
 
       {/* ── TRUST BAR ───────────────────────────────────────────────────────── */}
       <div className="bg-[#F9FAFB] border-b border-[#E5E7EB]">
