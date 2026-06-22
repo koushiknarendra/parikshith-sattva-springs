@@ -304,8 +304,7 @@ export default function SpringsClient() {
   const [mobileForm, setMobileForm] = useState(false)
   const [mounted, setMounted]       = useState(false)
   const [slideIndex, setSlideIndex] = useState(0)
-  const [activePlan, setActivePlan] = useState('C')
-  const [lightbox, setLightbox]     = useState<string | null>(null)
+  const [lightbox, setLightbox] = useState<string | null>(null)
   const formRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => { setMounted(true) }, [])
@@ -736,59 +735,19 @@ export default function SpringsClient() {
             </div>
           </div>
 
-          {/* Floor Plans */}
+          {/* Floor plan images — simple grid, click to enlarge */}
           <div>
-            <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-2">Villa Configurations</p>
-            <div className="flex items-end justify-between mb-6 gap-4">
-              <h2 className="text-2xl md:text-3xl font-black text-[#1C1C2E]" style={{ letterSpacing: '-0.02em' }}>Floor Plans</h2>
-              <p className="text-sm text-[#9CA3AF] hidden md:block">Select a type to view · Click to enlarge</p>
-            </div>
-
-            {/* Type tabs */}
-            <div className="flex flex-wrap gap-2 mb-6">
-              {[
-                { type: 'A', carpet: '2,798', builtup: '3,607', status: 'subscribed' },
-                { type: 'B', carpet: '2,887', builtup: '3,732', status: 'subscribed' },
-                { type: 'C', carpet: '2,989', builtup: '3,854', status: 'available' },
-                { type: 'D', carpet: '3,131', builtup: '4,034', status: 'available' },
-                { type: 'E', carpet: '3,214', builtup: '4,156', status: 'available' },
-                { type: 'F', carpet: '3,822', builtup: '5,236', status: 'available' },
-              ].map(p => (
-                <button key={p.type} onClick={() => setActivePlan(p.type)}
-                  className={`flex items-center gap-2 px-4 py-2.5 text-sm font-semibold rounded-sm border transition-all ${
-                    activePlan === p.type
-                      ? 'bg-[#2d3791] border-[#2d3791] text-white'
-                      : 'border-[#E5E7EB] text-[#4B5563] hover:border-[#2d3791] hover:text-[#2d3791] bg-white'
-                  }`}>
-                  Type {p.type}
-                  <span className={`text-xs font-normal ${activePlan === p.type ? 'text-white/70' : 'text-[#9CA3AF]'}`}>
-                    {p.carpet} sq ft
-                  </span>
-                  {p.status === 'subscribed' && (
-                    <span className={`text-[9px] px-1.5 py-0.5 rounded-sm font-medium ${activePlan === p.type ? 'bg-white/20 text-white/80' : 'bg-[#F3F4F6] text-[#9CA3AF]'}`}>
-                      Sold
-                    </span>
-                  )}
-                </button>
+            <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-2">Floor Plans</p>
+            <p className="text-sm text-[#9CA3AF] mb-6">Click any image to enlarge</p>
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+              {['a','b','c','d','e','f'].map(t => (
+                <div key={t} className="relative border border-[#E5E7EB] rounded-sm overflow-hidden cursor-zoom-in group bg-white"
+                  onClick={() => setLightbox(`/images/plans/type-${t}.jpeg`)}>
+                  <img src={`/images/plans/type-${t}.jpeg`} alt="Villa floor plan" className="w-full object-contain" />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
+                </div>
               ))}
             </div>
-
-            {/* Active floor plan image */}
-            <div className="relative border border-[#E5E7EB] rounded-sm overflow-hidden cursor-zoom-in group bg-white"
-              onClick={() => setLightbox(`/images/plans/type-${activePlan.toLowerCase()}.jpeg`)}>
-              <img
-                key={activePlan}
-                src={`/images/plans/type-${activePlan.toLowerCase()}.jpeg`}
-                alt={`Sattva Springs Type ${activePlan} Floor Plan`}
-                className="w-full object-contain animate-fade-in-up"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/8 transition-colors" />
-              <div className="absolute top-4 right-4 bg-[#0e1830]/70 text-white text-xs px-3 py-1.5 rounded-sm flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
-                <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
-                Enlarge
-              </div>
-            </div>
-            <p className="text-xs text-[#9CA3AF] text-center mt-3">Tap the plan to view full size</p>
           </div>
         </div>
       </section>
