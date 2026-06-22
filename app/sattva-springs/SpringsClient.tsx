@@ -8,6 +8,14 @@ const PHONE_LINK    = 'tel:+919380322553'
 const WHATSAPP      = 'https://wa.me/919380322553?text=Hi%2C%20I%27m%20interested%20in%20Sattva%20Springs.%20Please%20share%20the%20brochure.'
 const RERA          = 'PRM/KA/RERA/1251/310/PR/240724/006948'
 
+const HERO_IMAGES = [
+  { src: '/images/pool.jpg',      alt: 'Swimming pool' },
+  { src: '/images/gallery-2.jpg', alt: 'Living room interior' },
+  { src: '/images/cricket.jpg',   alt: 'Cricket pitch' },
+  { src: '/images/gallery-1.jpg', alt: 'Dining and kitchen' },
+  { src: '/images/gallery-3.jpg', alt: 'Yoga and meditation room' },
+]
+
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const VILLA_TYPES = [
   { label: 'Type A', carpet: '2,798', builtup: '3,607', price: '4.79', status: 'subscribed' },
@@ -288,9 +296,17 @@ function ExitIntent() {
 export default function SpringsClient() {
   const [mobileForm, setMobileForm] = useState(false)
   const [mounted, setMounted]       = useState(false)
+  const [slideIndex, setSlideIndex] = useState(0)
   const formRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => { setMounted(true) }, [])
+
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSlideIndex(i => (i + 1) % HERO_IMAGES.length)
+    }, 4500)
+    return () => clearInterval(id)
+  }, [])
 
   const scrollToForm = () => formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
 
@@ -328,9 +344,12 @@ export default function SpringsClient() {
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
       <section className="relative flex" style={{ minHeight: 'calc(100vh - 68px)' }}>
 
-        {/* Mobile background — property image with heavy overlay */}
+        {/* Mobile background — slideshow with heavy overlay */}
         <div className="md:hidden absolute inset-0 z-0">
-          <img src="/images/pool.jpg" alt="" className="w-full h-full object-cover object-center" />
+          {HERO_IMAGES.map((img, i) => (
+            <img key={img.src} src={img.src} alt="" className="absolute inset-0 w-full h-full object-cover object-center"
+              style={{ opacity: i === slideIndex ? 1 : 0, transition: 'opacity 1s ease' }} />
+          ))}
           <div className="absolute inset-0 bg-[#0e1830]/88" />
         </div>
 
@@ -387,13 +406,15 @@ export default function SpringsClient() {
           </div>
         </div>
 
-        {/* RIGHT: property photo — desktop only */}
+        {/* RIGHT: slideshow — desktop only */}
         <div className="hidden md:block flex-1 relative overflow-hidden">
-          <img
-            src="/images/pool.jpg"
-            alt="Sattva Springs – Swimming Pool, Kanakapura Road"
-            className="absolute inset-0 w-full h-full object-cover object-center"
-          />
+          {/* Image stack — fade between slides */}
+          {HERO_IMAGES.map((img, i) => (
+            <img key={img.src} src={img.src} alt={img.alt}
+              className="absolute inset-0 w-full h-full object-cover object-center"
+              style={{ opacity: i === slideIndex ? 1 : 0, transition: 'opacity 1s ease' }} />
+          ))}
+
           {/* Left blend into dark panel */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#0e1830]/40 via-[#0e1830]/10 to-transparent" />
 
@@ -411,12 +432,25 @@ export default function SpringsClient() {
             <p className="text-[10px] text-white/80 font-mono leading-none">{RERA.slice(0, 26)}…</p>
           </div>
 
-          {/* Urgency bar — bottom */}
+          {/* Bottom bar: urgency + slide dots */}
           <div className="absolute bottom-0 left-0 right-0 py-5 px-8"
-            style={{ background: 'linear-gradient(to top, rgba(14,24,48,0.75) 0%, transparent 100%)' }}>
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#afd23a] animate-pulse shrink-0" />
-              <p className="text-white/80 text-sm font-medium">Only 4 villa configurations available — Types C, D, E & F</p>
+            style={{ background: 'linear-gradient(to top, rgba(14,24,48,0.8) 0%, transparent 100%)' }}>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <span className="w-2 h-2 rounded-full bg-[#afd23a] animate-pulse shrink-0" />
+                <p className="text-white/80 text-sm font-medium">Only 4 villa configurations available — Types C, D, E & F</p>
+              </div>
+              <div className="flex items-center gap-1.5">
+                {HERO_IMAGES.map((_, i) => (
+                  <button key={i} onClick={() => setSlideIndex(i)}
+                    className="rounded-full transition-all"
+                    style={{
+                      width:  i === slideIndex ? 20 : 6,
+                      height: 6,
+                      background: i === slideIndex ? '#afd23a' : 'rgba(255,255,255,0.35)',
+                    }} />
+                ))}
+              </div>
             </div>
           </div>
         </div>
