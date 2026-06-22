@@ -350,19 +350,28 @@ export default function SpringsClient() {
       </header>
 
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
-      <section className="relative flex" style={{ minHeight: 'calc(100vh - 68px)' }}>
+      <section className="flex flex-col md:flex-row" style={{ minHeight: 'calc(100vh - 68px)' }}>
 
-        {/* Mobile background — slideshow with heavy overlay */}
-        <div className="md:hidden absolute inset-0 z-0">
+        {/* Mobile-only image — shown above the content block */}
+        <div className="md:hidden relative w-full overflow-hidden" style={{ height: '58vw', minHeight: 200, maxHeight: 300 }}>
           {HERO_IMAGES.map((img, i) => (
-            <img key={img.src} src={img.src} alt="" className="absolute inset-0 w-full h-full object-cover object-center"
+            <img key={img.src} src={img.src} alt={img.alt}
+              className="absolute inset-0 w-full h-full object-cover object-center"
               style={{ opacity: i === slideIndex ? 1 : 0, transition: 'opacity 1s ease' }} />
           ))}
-          <div className="absolute inset-0 bg-[#0e1830]/88" />
+          {/* Bottom fade into dark panel */}
+          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#0e1830] to-transparent" />
+          {/* Dot indicators */}
+          <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
+            {HERO_IMAGES.map((_, i) => (
+              <button key={i} onClick={() => setSlideIndex(i)} className="rounded-full transition-all"
+                style={{ width: i === slideIndex ? 20 : 6, height: 6, background: i === slideIndex ? '#afd23a' : 'rgba(255,255,255,0.4)' }} />
+            ))}
+          </div>
         </div>
 
         {/* LEFT: dark info panel */}
-        <div className="relative z-10 w-full md:w-[44%] bg-[#0e1830]/0 md:bg-[#0e1830] flex flex-col justify-between px-8 py-10 md:px-14 md:py-14">
+        <div className="relative z-10 w-full md:w-[44%] bg-[#0e1830] flex flex-col justify-between px-8 py-10 md:px-14 md:py-14">
 
           {/* Main content */}
           <div className="flex-1 flex flex-col justify-center">
