@@ -245,7 +245,14 @@ function EnquiryForm({ source = 'hero', ctaLabel = 'Request a Callback', compact
         {status === 'loading' ? 'Sending…' : ctaLabel}
       </button>
       {status === 'error' && <p className="text-center text-xs text-red-500">Something went wrong. Please call us directly.</p>}
-      <p className="text-center text-xs text-[#9CA3AF]">Your details are kept strictly confidential.</p>
+      <div className="flex items-start gap-2.5 bg-[#F0F4FF] border border-[#2d3791]/15 rounded-sm px-3 py-2.5">
+        <svg className="w-3.5 h-3.5 text-[#2d3791] shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+        </svg>
+        <p className="text-[11px] text-[#4B5563] leading-relaxed">
+          <span className="font-semibold text-[#2d3791]">No spam, ever.</span> We share your number with one advisor only. No bulk calls, no repeated WhatsApp messages.
+        </p>
+      </div>
     </form>
   )
 }
@@ -402,7 +409,12 @@ export default function SpringsClient() {
                 <p className="text-[#0e1830] font-black text-2xl leading-none tracking-wide">{PHONE_DISPLAY}</p>
               </div>
             </a>
-            <p className="text-[9px] text-white/20 mt-3 text-center">RERA · {RERA}</p>
+            <div className="flex items-center justify-center gap-1.5 mt-3">
+              <svg className="w-3 h-3 text-white/30 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+              </svg>
+              <p className="text-[10px] text-white/30">No spam calls · One advisor · RERA {RERA.slice(0, 12)}…</p>
+            </div>
           </div>
         </div>
 
