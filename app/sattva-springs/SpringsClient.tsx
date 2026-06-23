@@ -10,11 +10,11 @@ const WHATSAPP      = 'https://wa.me/919380322553?text=Hi%2C%20I%27m%20intereste
 const RERA          = 'PRM/KA/RERA/1251/310/PR/240724/006948'
 
 const HERO_IMAGES = [
-  { src: '/images/pool.jpg',      alt: 'Swimming pool' },
-  { src: '/images/gallery-2.jpg', alt: 'Living room interior' },
-  { src: '/images/cricket.jpg',   alt: 'Cricket pitch' },
-  { src: '/images/gallery-1.jpg', alt: 'Dining and kitchen' },
-  { src: '/images/gallery-3.jpg', alt: 'Yoga and meditation room' },
+  { src: 'https://sattvagroup.com/wp-content/uploads/2024/02/sattva-springs-banner-desktop-1.webp', alt: 'Sattva Springs — Building Exterior' },
+  { src: 'https://sattvagroup.com/wp-content/uploads/2024/02/Living-Room_Cam.webp',                alt: 'Living Room' },
+  { src: 'https://sattvagroup.com/wp-content/uploads/2024/02/Master-Bedroom.webp',                alt: 'Master Bedroom' },
+  { src: 'https://sattvagroup.com/wp-content/uploads/2024/02/Balcony.webp',                       alt: 'Balcony' },
+  { src: 'https://sattvagroup.com/wp-content/uploads/2024/02/Type-5-Villa-Family-Lounge.webp',    alt: 'Family Lounge' },
 ]
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
@@ -562,10 +562,10 @@ export default function SpringsClient() {
           <h2 className="text-3xl md:text-4xl font-black text-white mb-8" style={{ letterSpacing: '-0.02em' }}>The Residences</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
-              { src: '/images/gallery-1.jpg', label: 'Villa Exterior' },
-              { src: '/images/gallery-2.jpg', label: 'Interior Spaces' },
-              { src: '/images/pool.jpg',      label: 'Swimming Pool' },
-              { src: '/images/gallery-3.jpg', label: 'Community Views' },
+              { src: 'https://sattvagroup.com/wp-content/uploads/2024/02/Living-Room_Cam.webp',             label: 'Living Room' },
+              { src: 'https://sattvagroup.com/wp-content/uploads/2024/02/Master-Bedroom.webp',             label: 'Master Bedroom' },
+              { src: 'https://sattvagroup.com/wp-content/uploads/2024/02/Balcony.webp',                    label: 'Balcony' },
+              { src: 'https://sattvagroup.com/wp-content/uploads/2024/02/Toilet.webp',                     label: 'Bathroom' },
             ].map(img => (
               <div key={img.src} className="aspect-[4/3] rounded-sm overflow-hidden relative group">
                 <Image src={img.src} alt={img.label} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -578,17 +578,17 @@ export default function SpringsClient() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-3 mt-3">
             <div className="aspect-[16/6] rounded-sm overflow-hidden relative group">
-              <Image src="/images/elevation.jpg" alt="Project Elevation" fill sizes="(max-width: 768px) 100vw, 66vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Image src="https://sattvagroup.com/wp-content/uploads/2024/02/sattva-springs-banner-desktop-1.webp" alt="Project Exterior" fill sizes="(max-width: 768px) 100vw, 66vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-all" />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
-                <p className="text-white/80 text-xs">Project Elevation</p>
+                <p className="text-white/80 text-xs">Project Exterior</p>
               </div>
             </div>
             <div className="aspect-[4/3] md:aspect-auto rounded-sm overflow-hidden relative group">
-              <Image src="/images/cricket.jpg" alt="Cricket Pitch" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Image src="https://sattvagroup.com/wp-content/uploads/2024/02/Type-5-Villa-Family-Lounge.webp" alt="Family Lounge" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all" />
               <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
-                <p className="text-white/80 text-xs">Cricket Pitch</p>
+                <p className="text-white/80 text-xs">Family Lounge</p>
               </div>
             </div>
           </div>
