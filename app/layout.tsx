@@ -10,13 +10,26 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  title: 'Sattva Springs – Ultra-Luxury 4 BHK Villas | Kanakapura Road, Bangalore',
-  description:
-    'Book exclusive 4 BHK Row Villas by Sattva Group on Kanakapura Road, Bangalore. Starting ₹4.79 Cr. RERA Approved. Only 4 configurations left. Contact Sattva Constructions – Authorised Channel Partner.',
+  metadataBase: new URL('https://www.sattvaconstructions.in'),
+  title: {
+    default: 'Sattva Constructions – Authorised Channel Partner | Bangalore',
+    template: '%s | Sattva Constructions',
+  },
+  description: 'Authorised channel partner of Sattva Group. Expert advisory and booking support for premium residential projects in Bangalore.',
   openGraph: {
-    title: 'Sattva Springs | 4 BHK Luxury Villas | Kanakapura Road',
-    description: 'Ultra-luxury row villas starting ₹4.79 Cr. Only 4 types remaining. RERA: PRM/KA/RERA/1251/310/PR/240724/006948',
-    siteName: 'Sattva Constructions',
+    siteName: 'Sattva Constructions – Authorised Channel Partner',
+    locale: 'en_IN',
+    type: 'website',
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
   },
 }
 
