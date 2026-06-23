@@ -431,7 +431,7 @@ export default function SpringsClient() {
           <div className="absolute bottom-10 right-10 w-[130px] h-[130px] rounded-full flex flex-col items-center justify-center text-center"
             style={{ background: '#2d3791', boxShadow: '0 0 0 4px #afd23a, 0 24px 48px rgba(0,0,0,0.5)' }}>
             <p className="text-[9px] uppercase tracking-wider text-white/55 leading-none mb-1">Starting @</p>
-            <p className="text-[#afd23a] font-black text-[28px] leading-none">₹5.16</p>
+            <p className="text-[#afd23a] font-black text-[28px] leading-none">₹4.79</p>
             <p className="text-white font-bold text-xs leading-none mt-1">Crore*</p>
           </div>
 
