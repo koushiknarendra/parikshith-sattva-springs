@@ -20,7 +20,7 @@ const HERO_IMAGES = [
 const VILLA_TYPES = [
   { label: 'Type A', carpet: '2,798', builtup: '3,607', price: '4.79', status: 'subscribed' },
   { label: 'Type B', carpet: '2,887', builtup: '3,732', price: '5.00', status: 'subscribed' },
-  { label: 'Type C', carpet: '2,989', builtup: '3,854', price: '5.16', status: 'available'  },
+  { label: 'Type C', carpet: '2,989', builtup: '3,854', price: '5.16', status: 'subscribed' },
   { label: 'Type D', carpet: '3,131', builtup: '4,034', price: '5.44', status: 'available'  },
   { label: 'Type E', carpet: '3,214', builtup: '4,156', price: '5.60', status: 'available'  },
   { label: 'Type F', carpet: '3,822', builtup: '5,236', price: '7.00', status: 'available'  },
@@ -107,12 +107,12 @@ const FAQS = [
   { q: 'Is Sattva Springs RERA registered?',
     a: `Yes. The project is registered under Karnataka RERA — number ${RERA}. You can verify this independently at karerait.karnataka.gov.in.` },
   { q: 'What configurations are currently available?',
-    a: 'Types A and B have been fully subscribed. Types C through F — 3,854 to 5,236 sq ft built-up — are open for booking.' },
+    a: 'Types A, B, and C have been fully subscribed. Types D through F — 4,034 to 5,236 sq ft built-up — are open for booking.' },
   { q: 'What is the total cost of a villa?',
-    a: 'All-inclusive prices range from ₹5.16 Cr (Type C) to ₹7.00 Cr (Type F). We share detailed cost sheets, payment plans, and home loan options on request.' },
+    a: 'All-inclusive prices range from ₹5.44 Cr (Type D) to ₹7.00 Cr (Type F). We share detailed cost sheets, payment plans, and home loan options on request.' },
   { q: 'When is possession expected?',
     a: 'RERA scheduled possession is September 2027. Construction is approximately 50% complete as of mid-2026 and progressing on schedule.' },
-  { q: 'Is there any additional cost when buying through Sattva Constructions?',
+  { q: 'Is there any additional cost when buying through our channel partner?',
     a: 'None. We offer the same pricing as the developer — the buyer pays nothing extra. What you gain is personalised advisory, documentation support, home loan facilitation, and dedicated post-booking service.' },
 ]
 
@@ -963,7 +963,7 @@ export default function SpringsClient() {
           </div>
           <div className="border-t border-white/5 pt-8">
             <p className="text-[11px] text-[#4B5563] leading-relaxed">
-              <strong className="text-[#6B7280]">Disclaimer:</strong> Sattva Constructions is an authorised channel partner of Sattva Group and is not the developer or promoter. All project details, specifications, pricing, and timelines are as provided by the developer and are subject to change without prior notice. Prices are indicative. Prospective buyers are advised to independently verify all information, review RERA filings, and consult qualified legal and financial advisors before making investment decisions. RERA No: {RERA}.
+              <strong className="text-[#6B7280]">Disclaimer:</strong> This is developed by an authorised channel partner of Sattva Group and is not the developer or promoter. All project details, specifications, pricing, and timelines are as provided by the developer and are subject to change without prior notice. Prices are indicative. Prospective buyers are advised to independently verify all information, review RERA filings, and consult qualified legal and financial advisors before making investment decisions. RERA No: {RERA}.
             </p>
           </div>
         </div>
