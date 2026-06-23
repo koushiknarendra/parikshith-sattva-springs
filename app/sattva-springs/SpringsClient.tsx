@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 
 // ─── REPLACE BEFORE GOING LIVE ──────────────────────────────────────────────
 const PHONE_DISPLAY = '+91 93803 22553'
@@ -342,8 +343,10 @@ export default function SpringsClient() {
         {/* Mobile-only image — shown above the content block */}
         <div className="md:hidden relative w-full overflow-hidden" style={{ height: '58vw', minHeight: 200, maxHeight: 300 }}>
           {HERO_IMAGES.map((img, i) => (
-            <img key={img.src} src={img.src} alt={img.alt}
-              className="absolute inset-0 w-full h-full object-cover object-center"
+            <Image key={img.src} src={img.src} alt={img.alt}
+              fill sizes="(max-width: 768px) 100vw, 56vw"
+              className="object-cover object-center"
+              priority={i === 0}
               style={{ opacity: i === slideIndex ? 1 : 0, transition: 'opacity 1s ease' }} />
           ))}
           {/* Bottom fade into dark panel */}
@@ -419,8 +422,10 @@ export default function SpringsClient() {
         <div className="hidden md:block flex-1 relative overflow-hidden">
           {/* Image stack — fade between slides */}
           {HERO_IMAGES.map((img, i) => (
-            <img key={img.src} src={img.src} alt={img.alt}
-              className="absolute inset-0 w-full h-full object-cover object-center"
+            <Image key={img.src} src={img.src} alt={img.alt}
+              fill sizes="(max-width: 768px) 100vw, 56vw"
+              className="object-cover object-center"
+              priority={i === 0}
               style={{ opacity: i === slideIndex ? 1 : 0, transition: 'opacity 1s ease' }} />
           ))}
 
@@ -583,7 +588,7 @@ export default function SpringsClient() {
               { src: '/images/gallery-3.jpg', label: 'Community Views' },
             ].map(img => (
               <div key={img.src} className="aspect-[4/3] rounded-sm overflow-hidden relative group">
-                <img src={img.src} alt={img.label} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <Image src={img.src} alt={img.label} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all" />
                 <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
                   <p className="text-white/80 text-xs">{img.label}</p>
@@ -593,14 +598,14 @@ export default function SpringsClient() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-3 mt-3">
             <div className="aspect-[16/6] rounded-sm overflow-hidden relative group">
-              <img src="/images/elevation.jpg" alt="Project Elevation" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Image src="/images/elevation.jpg" alt="Project Elevation" fill sizes="(max-width: 768px) 100vw, 66vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-black/15 group-hover:bg-black/5 transition-all" />
               <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
                 <p className="text-white/80 text-xs">Project Elevation</p>
               </div>
             </div>
             <div className="aspect-[4/3] md:aspect-auto rounded-sm overflow-hidden relative group">
-              <img src="/images/cricket.jpg" alt="Cricket Pitch" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Image src="/images/cricket.jpg" alt="Cricket Pitch" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover group-hover:scale-105 transition-transform duration-500" />
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all" />
               <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black/60 to-transparent">
                 <p className="text-white/80 text-xs">Cricket Pitch</p>
@@ -722,7 +727,7 @@ export default function SpringsClient() {
             </div>
             <div className="relative border border-[#E5E7EB] rounded-sm overflow-hidden cursor-zoom-in group"
               onClick={() => setLightbox('/images/plans/master-plan.jpeg')}>
-              <img src="/images/plans/master-plan.jpeg" alt="Sattva Springs Master Plan" className="w-full object-contain" />
+              <img src="/images/plans/master-plan.jpeg" alt="Sattva Springs Master Plan" className="w-full object-contain" loading="lazy" />
               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
               <div className="absolute top-4 right-4 bg-[#0e1830]/70 text-white text-xs px-3 py-1.5 rounded-sm flex items-center gap-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
                 <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0zM10 7v3m0 0v3m0-3h3m-3 0H7" /></svg>
@@ -739,7 +744,7 @@ export default function SpringsClient() {
               {['a','b','c','d','e','f'].map(t => (
                 <div key={t} className="relative border border-[#E5E7EB] rounded-sm overflow-hidden cursor-zoom-in group bg-white"
                   onClick={() => setLightbox(`/images/plans/type-${t}.jpeg`)}>
-                  <img src={`/images/plans/type-${t}.jpeg`} alt="Villa floor plan" className="w-full object-contain" />
+                  <img src={`/images/plans/type-${t}.jpeg`} alt="Villa floor plan" className="w-full object-contain" loading="lazy" />
                   <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors" />
                 </div>
               ))}
