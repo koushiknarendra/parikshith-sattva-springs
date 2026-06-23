@@ -206,7 +206,7 @@ function EnquiryForm({ source = 'hero', ctaLabel = 'Request a Callback', compact
     } catch { setStatus('error') }
   }
 
-  const field = 'w-full border border-[#E5E7EB] rounded-sm px-4 py-3 text-sm text-[#1C1C2E] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#2d3791] transition-colors bg-white'
+  const field = 'w-full border border-[#E5E7EB] rounded-sm px-4 py-3 text-base text-[#1C1C2E] placeholder:text-[#9CA3AF] focus:outline-none focus:border-[#2d3791] transition-colors bg-white'
 
   return (
     <form onSubmit={handle} className="space-y-3">
@@ -229,7 +229,7 @@ function EnquiryForm({ source = 'hero', ctaLabel = 'Request a Callback', compact
         ))}
       </select>
       <button type="submit" disabled={status === 'loading'}
-        className="w-full bg-[#2d3791] hover:bg-[#232d7a] text-white font-semibold py-3.5 rounded-sm text-sm tracking-wide transition-colors disabled:opacity-50">
+        className="w-full bg-[#2d3791] hover:bg-[#232d7a] text-white font-semibold py-3.5 rounded-sm text-base tracking-wide transition-colors disabled:opacity-50">
         {status === 'loading' ? 'Sending…' : ctaLabel}
       </button>
       {status === 'error' && <p className="text-center text-xs text-red-500">Something went wrong. Please call us directly.</p>}
@@ -252,10 +252,10 @@ function FAQItem({ q, a }: { q: string; a: string }) {
     <div className="border-b border-[#E5E7EB]">
       <button onClick={() => setOpen(o => !o)}
         className="w-full flex items-start justify-between py-5 text-left gap-6 group">
-        <span className="text-sm md:text-base font-medium text-[#1C1C2E] group-hover:text-[#2d3791] transition-colors">{q}</span>
+        <span className="text-base md:text-lg font-medium text-[#1C1C2E] group-hover:text-[#2d3791] transition-colors">{q}</span>
         <span className="text-[#2d3791] text-lg mt-0.5 shrink-0 font-light">{open ? '−' : '+'}</span>
       </button>
-      {open && <p className="pb-5 text-sm text-[#6B7280] leading-relaxed animate-fade-in-up">{a}</p>}
+      {open && <p className="pb-5 text-base text-[#6B7280] leading-relaxed animate-fade-in-up">{a}</p>}
     </div>
   )
 }
@@ -274,7 +274,7 @@ function ExitIntent() {
     <div className="fixed inset-0 z-50 bg-black/50 flex items-center justify-center p-4 animate-backdrop" onClick={() => setShow(false)}>
       <div className="bg-white max-w-md w-full shadow-2xl animate-fade-in-up" onClick={e => e.stopPropagation()}>
         <div className="bg-[#2d3791] px-8 py-6">
-          <p className="text-xs uppercase tracking-widest text-white/60 mb-1">Before you leave</p>
+          <p className="text-sm uppercase tracking-widest text-white/60 mb-1">Before you leave</p>
           <h3 className="text-white text-xl font-semibold">Request the project brochure</h3>
           <p className="text-white/70 text-sm mt-1">Floor plans, pricing & site details sent to your number.</p>
         </div>
@@ -322,11 +322,11 @@ export default function SpringsClient() {
             </div>
           </div>
           <div className="flex items-center gap-4">
-            <a href={PHONE_LINK} className="hidden md:flex items-center gap-1.5 text-sm text-[#4B5563] hover:text-[#2d3791] transition-colors">
+            <a href={PHONE_LINK} className="hidden md:flex items-center gap-1.5 text-base text-[#4B5563] hover:text-[#2d3791] transition-colors">
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
               {PHONE_DISPLAY}
             </a>
-            <a href={WHATSAPP} target="_blank" rel="noreferrer" className="hidden md:flex items-center gap-1.5 text-sm text-[#4B5563] hover:text-[#25D366] transition-colors">
+            <a href={WHATSAPP} target="_blank" rel="noreferrer" className="hidden md:flex items-center gap-1.5 text-base text-[#4B5563] hover:text-[#25D366] transition-colors">
               <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
               WhatsApp
             </a>
@@ -475,7 +475,7 @@ export default function SpringsClient() {
         <div className="max-w-[1200px] mx-auto px-6 py-16">
           <div className="grid md:grid-cols-[1fr_460px] gap-12 items-center">
             <div>
-              <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Limited Availability</p>
+              <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Limited Availability</p>
               <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E] mb-4 leading-tight" style={{ letterSpacing: '-0.02em' }}>
                 Schedule a site visit or get the brochure
               </h2>
@@ -488,7 +488,7 @@ export default function SpringsClient() {
                   'Same pricing as the developer — no extra cost to you',
                   'Home loan pre-approval assistance with 8 major banks',
                 ].map(t => (
-                  <div key={t} className="flex items-start gap-3 text-sm text-[#4B5563]">
+                  <div key={t} className="flex items-start gap-3 text-base text-[#4B5563]">
                     <span className="w-4 h-4 bg-[#2d3791] text-white rounded-full flex items-center justify-center text-[9px] font-bold shrink-0 mt-0.5">✓</span>
                     {t}
                   </div>
@@ -496,19 +496,19 @@ export default function SpringsClient() {
               </div>
               <div className="flex gap-3">
                 <a href={PHONE_LINK}
-                  className="flex items-center gap-2 bg-[#2d3791] hover:bg-[#232d7a] text-white font-semibold px-6 py-3.5 rounded-sm text-sm transition-colors">
+                  className="flex items-center gap-2 bg-[#2d3791] hover:bg-[#232d7a] text-white font-semibold px-6 py-3.5 rounded-sm text-base transition-colors">
                   <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
                   Call Now
                 </a>
                 <a href={WHATSAPP} target="_blank" rel="noreferrer"
-                  className="flex items-center gap-2 border border-[#2d3791] text-[#2d3791] hover:bg-[#2d3791] hover:text-white font-semibold px-6 py-3.5 rounded-sm text-sm transition-colors">
+                  className="flex items-center gap-2 border border-[#2d3791] text-[#2d3791] hover:bg-[#2d3791] hover:text-white font-semibold px-6 py-3.5 rounded-sm text-base transition-colors">
                   <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" /></svg>
                   WhatsApp
                 </a>
               </div>
             </div>
             <div className="bg-white p-8 border border-[#E5E7EB]" style={{ boxShadow: '0 8px 40px rgba(0,0,0,0.07)' }}>
-              <p className="text-xs uppercase tracking-widest text-[#9CA3AF] mb-1">Get in Touch</p>
+              <p className="text-sm uppercase tracking-widest text-[#9CA3AF] mb-1">Get in Touch</p>
               <h3 className="text-lg font-bold text-[#1C1C2E] mb-5">Request a Callback</h3>
               <EnquiryForm source="hero" ctaLabel="Request a Callback" />
             </div>
@@ -539,19 +539,19 @@ export default function SpringsClient() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-start">
             <div>
-              <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">About the Project</p>
+              <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">About the Project</p>
               <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E] mb-6 leading-tight" style={{ letterSpacing: '-0.02em' }}>
                 A boutique villa community designed for discerning families
               </h2>
-              <p className="text-[#6B7280] text-base leading-relaxed mb-4">
+              <p className="text-[#6B7280] text-lg leading-relaxed mb-4">
                 Sattva Springs is an ultra-exclusive gated enclave of just 66 row villas spread across 5.5 verdant acres on Kanakapura Road, South Bangalore — directly opposite the Art of Living International Centre.
               </p>
-              <p className="text-[#6B7280] text-base leading-relaxed mb-8">
+              <p className="text-[#6B7280] text-lg leading-relaxed mb-8">
                 Each villa is a B+G+2+Terrace triplex with carpet areas ranging from 2,798 to 3,822 sq ft. The low-density design ensures privacy, open skies, and a genuinely villa lifestyle — a rarity in Bangalore.
               </p>
               <div className="bg-[#F9FAFB] border border-[#E5E7EB] rounded-sm p-5">
                 <div className="flex justify-between items-center mb-2">
-                  <p className="text-sm font-semibold text-[#1C1C2E]">Construction Progress</p>
+                  <p className="text-base font-semibold text-[#1C1C2E]">Construction Progress</p>
                   <p className="text-sm font-bold text-[#2d3791]">50%</p>
                 </div>
                 <div className="h-1.5 bg-[#E5E7EB] rounded-full overflow-hidden">
@@ -561,11 +561,11 @@ export default function SpringsClient() {
               </div>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Villa Specifications</p>
+              <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Villa Specifications</p>
               <div className="divide-y divide-[#F3F4F6]">
                 {SPECS.map(s => (
                   <div key={s.label} className="flex justify-between py-3 gap-4">
-                    <p className="text-sm text-[#9CA3AF] shrink-0 w-28">{s.label}</p>
+                    <p className="text-base text-[#9CA3AF] shrink-0 w-28">{s.label}</p>
                     <p className="text-sm text-[#1C1C2E] text-right">{s.value}</p>
                   </div>
                 ))}
@@ -578,8 +578,8 @@ export default function SpringsClient() {
       {/* ── GALLERY ──────────────────────────────────────────────────────────── */}
       <section className="bg-[#0e1830] py-16">
         <div className="max-w-[1200px] mx-auto px-6">
-          <p className="text-xs uppercase tracking-widest text-[#afd23a] font-semibold mb-3">Gallery</p>
-          <h2 className="text-2xl md:text-3xl font-black text-white mb-8" style={{ letterSpacing: '-0.02em' }}>The Residences</h2>
+          <p className="text-sm uppercase tracking-widest text-[#afd23a] font-semibold mb-3">Gallery</p>
+          <h2 className="text-3xl md:text-4xl font-black text-white mb-8" style={{ letterSpacing: '-0.02em' }}>The Residences</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[
               { src: '/images/gallery-1.jpg', label: 'Villa Exterior' },
@@ -619,11 +619,11 @@ export default function SpringsClient() {
       {/* ── PRICING ──────────────────────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="max-w-[900px] mx-auto px-6">
-          <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Pricing</p>
+          <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Pricing</p>
           <div className="flex flex-wrap items-end justify-between gap-4 mb-8">
             <div>
-              <h2 className="text-2xl md:text-3xl font-black text-[#1C1C2E]" style={{ letterSpacing: '-0.02em' }}>Villa Configurations & Pricing</h2>
-              <p className="text-[#6B7280] text-sm mt-1">All-inclusive pricing. Payment plans and home loan options available on request.</p>
+              <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E]" style={{ letterSpacing: '-0.02em' }}>Villa Configurations & Pricing</h2>
+              <p className="text-[#6B7280] text-lg mt-1">All-inclusive pricing. Payment plans and home loan options available on request.</p>
             </div>
             <div className="flex items-center gap-1.5 bg-amber-50 border border-amber-200 rounded-sm px-3 py-2">
               <span className="w-1.5 h-1.5 rounded-full bg-amber-500 animate-pulse shrink-0" />
@@ -647,11 +647,11 @@ export default function SpringsClient() {
                 <div className="grid grid-cols-2 gap-x-4 gap-y-2">
                   <div>
                     <p className="text-[10px] uppercase tracking-wider text-[#9CA3AF]">Carpet Area</p>
-                    <p className="text-sm text-[#4B5563] mt-0.5">{v.carpet} sq ft</p>
+                    <p className="text-base text-[#4B5563] mt-0.5">{v.carpet} sq ft</p>
                   </div>
                   <div>
                     <p className="text-[10px] uppercase tracking-wider text-[#9CA3AF]">Built-up Area</p>
-                    <p className="text-sm text-[#4B5563] mt-0.5">{v.builtup} sq ft</p>
+                    <p className="text-base text-[#4B5563] mt-0.5">{v.builtup} sq ft</p>
                   </div>
                 </div>
               </div>
@@ -669,10 +669,10 @@ export default function SpringsClient() {
             </div>
             {VILLA_TYPES.map(v => (
               <div key={v.label} className={`grid grid-cols-5 border-b border-[#F3F4F6] last:border-0 transition-colors hover:bg-[#F9FAFB] ${v.status === 'subscribed' ? 'opacity-40' : ''}`}>
-                <div className="px-5 py-4"><p className="font-semibold text-sm text-[#1C1C2E]">{v.label}</p></div>
-                <div className="px-5 py-4"><p className="text-sm text-[#6B7280]">{v.carpet} sq ft</p></div>
-                <div className="px-5 py-4"><p className="text-sm text-[#6B7280]">{v.builtup} sq ft</p></div>
-                <div className="px-5 py-4"><p className="text-sm font-semibold text-[#1C1C2E]">₹{v.price} Cr</p></div>
+                <div className="px-5 py-4"><p className="font-semibold text-base text-[#1C1C2E]">{v.label}</p></div>
+                <div className="px-5 py-4"><p className="text-base text-[#6B7280]">{v.carpet} sq ft</p></div>
+                <div className="px-5 py-4"><p className="text-base text-[#6B7280]">{v.builtup} sq ft</p></div>
+                <div className="px-5 py-4"><p className="text-base font-semibold text-[#1C1C2E]">₹{v.price} Cr</p></div>
                 <div className="px-5 py-4">
                   {v.status === 'available'
                     ? <span className="text-xs font-semibold text-[#16a34a]">Available</span>
@@ -684,11 +684,11 @@ export default function SpringsClient() {
           <p className="text-xs text-[#9CA3AF] mt-3">* Prices are indicative and subject to revision. Introductory pricing valid until 15 July 2026.</p>
 
           <div className="mt-8 flex flex-col sm:flex-row gap-3">
-            <button onClick={scrollToForm} className="bg-[#2d3791] hover:bg-[#232d7a] text-white font-semibold px-8 py-3.5 rounded-sm text-sm transition-colors tracking-wide">
+            <button onClick={scrollToForm} className="bg-[#2d3791] hover:bg-[#232d7a] text-white font-semibold px-8 py-3.5 rounded-sm text-base transition-colors tracking-wide">
               Request Detailed Cost Sheet
             </button>
             <a href={WHATSAPP} target="_blank" rel="noreferrer"
-              className="flex items-center justify-center gap-2 border border-[#E5E7EB] text-[#4B5563] hover:border-[#2d3791] hover:text-[#2d3791] font-semibold px-8 py-3.5 rounded-sm text-sm transition-colors">
+              className="flex items-center justify-center gap-2 border border-[#E5E7EB] text-[#4B5563] hover:border-[#2d3791] hover:text-[#2d3791] font-semibold px-8 py-3.5 rounded-sm text-base transition-colors">
               Download Brochure via WhatsApp
             </a>
           </div>
@@ -699,8 +699,8 @@ export default function SpringsClient() {
       <div className="bg-white border-y border-[#E5E7EB] py-10">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="text-center mb-6">
-            <p className="text-xs uppercase tracking-widest text-[#9CA3AF] font-semibold mb-1">Bank-Approved Project</p>
-            <p className="text-sm text-[#6B7280]">Home loans available from all leading banks — assistance at no cost to you</p>
+            <p className="text-sm uppercase tracking-widest text-[#9CA3AF] font-semibold mb-1">Bank-Approved Project</p>
+            <p className="text-base text-[#6B7280]">Home loans available from all leading banks — assistance at no cost to you</p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-3">
             {BANK_LOGOS.map(b => (
@@ -720,10 +720,10 @@ export default function SpringsClient() {
 
           {/* Master Plan */}
           <div className="mb-16">
-            <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-2">Site Layout</p>
+            <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-2">Site Layout</p>
             <div className="flex items-end justify-between mb-6 gap-4">
-              <h2 className="text-2xl md:text-3xl font-black text-[#1C1C2E]" style={{ letterSpacing: '-0.02em' }}>Master Plan</h2>
-              <p className="text-sm text-[#9CA3AF] hidden md:block">66 villas across 5.5 acres · Click image to enlarge</p>
+              <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E]" style={{ letterSpacing: '-0.02em' }}>Master Plan</h2>
+              <p className="text-base text-[#9CA3AF] hidden md:block">66 villas across 5.5 acres · Click image to enlarge</p>
             </div>
             <div className="relative border border-[#E5E7EB] rounded-sm overflow-hidden cursor-zoom-in group"
               onClick={() => setLightbox('/images/plans/master-plan.jpeg')}>
@@ -738,8 +738,8 @@ export default function SpringsClient() {
 
           {/* Floor plan images — simple grid, click to enlarge */}
           <div>
-            <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-2">Floor Plans</p>
-            <p className="text-sm text-[#9CA3AF] mb-6">Click any image to enlarge</p>
+            <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-2">Floor Plans</p>
+            <p className="text-base text-[#9CA3AF] mb-6">Click any image to enlarge</p>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
               {['a','b','c','d','e','f'].map(t => (
                 <div key={t} className="relative border border-[#E5E7EB] rounded-sm overflow-hidden cursor-zoom-in group bg-white"
@@ -768,15 +768,15 @@ export default function SpringsClient() {
       {/* ── AMENITIES ────────────────────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Amenities</p>
-          <h2 className="text-2xl md:text-3xl font-black text-[#1C1C2E] mb-10" style={{ letterSpacing: '-0.02em' }}>30+ Curated Lifestyle Amenities</h2>
+          <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Amenities</p>
+          <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E] mb-10" style={{ letterSpacing: '-0.02em' }}>30+ Curated Lifestyle Amenities</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {AMENITY_GROUPS.map(g => (
               <div key={g.category}>
                 <p className="text-xs font-bold uppercase tracking-widest text-[#2d3791] mb-3 pb-2 border-b border-[#E5E7EB]">{g.category}</p>
                 <ul className="space-y-2">
                   {g.items.map(item => (
-                    <li key={item} className="flex items-start gap-2.5 text-sm text-[#4B5563]">
+                    <li key={item} className="flex items-start gap-2.5 text-base text-[#4B5563]">
                       <span className="w-1 h-1 rounded-full bg-[#2d3791] mt-2 shrink-0" />
                       {item}
                     </li>
@@ -791,14 +791,14 @@ export default function SpringsClient() {
       {/* ── LOCATION ─────────────────────────────────────────────────────────── */}
       <section className="bg-[#F9FAFB] py-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Location</p>
-          <h2 className="text-2xl md:text-3xl font-black text-[#1C1C2E] mb-2" style={{ letterSpacing: '-0.02em' }}>Kanakapura Road, South Bangalore</h2>
-          <p className="text-[#6B7280] text-sm mb-10">129 Kanakapura Road, Badamanavarathekaval, Bengaluru 560082 — directly opposite the Art of Living International Centre.</p>
+          <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Location</p>
+          <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E] mb-2" style={{ letterSpacing: '-0.02em' }}>Kanakapura Road, South Bangalore</h2>
+          <p className="text-[#6B7280] text-lg mb-10">129 Kanakapura Road, Badamanavarathekaval, Bengaluru 560082 — directly opposite the Art of Living International Centre.</p>
           <div className="grid md:grid-cols-2 gap-10">
             <div className="space-y-px border border-[#E5E7EB] rounded-sm overflow-hidden">
               {LOCATION_HIGHLIGHTS.map((l, i) => (
                 <div key={l.place} className={`flex items-center justify-between px-5 py-3.5 ${i % 2 === 0 ? 'bg-white' : 'bg-[#F9FAFB]'}`}>
-                  <p className="text-sm text-[#4B5563]">{l.place}</p>
+                  <p className="text-base text-[#4B5563]">{l.place}</p>
                   <p className="text-sm font-semibold text-[#2d3791] shrink-0 ml-4">{l.dist}</p>
                 </div>
               ))}
@@ -823,16 +823,16 @@ export default function SpringsClient() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <p className="text-xs uppercase tracking-widest text-[#afd23a] font-semibold mb-3">The Developer</p>
+              <p className="text-sm uppercase tracking-widest text-[#afd23a] font-semibold mb-3">The Developer</p>
               <div className="flex items-center gap-4 mb-6">
                 <img src="/images/sattva-logo.webp" alt="Sattva Group" className="h-10 object-contain" />
                 <div className="w-px h-10 bg-white/10" />
-                <h2 className="text-2xl md:text-3xl font-black" style={{ letterSpacing: '-0.02em' }}>Sattva Group</h2>
+                <h2 className="text-3xl md:text-4xl font-black" style={{ letterSpacing: '-0.02em' }}>Sattva Group</h2>
               </div>
-              <p className="text-white/60 text-sm leading-relaxed mb-4">
+              <p className="text-white/60 text-base leading-relaxed mb-4">
                 Established in 1993, Sattva Group is one of India's foremost real estate conglomerates with a 31-year record of on-time delivery across residential, commercial, IT parks, co-living, and warehousing segments.
               </p>
-              <p className="text-white/60 text-sm leading-relaxed mb-8">
+              <p className="text-white/60 text-base leading-relaxed mb-8">
                 The group has consistently ranked among India's top developers and has been recognised at prestigious industry forums for both commercial and residential excellence.
               </p>
               <div className="space-y-2">
@@ -867,15 +867,15 @@ export default function SpringsClient() {
       {/* ── TESTIMONIALS ─────────────────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Testimonials</p>
-          <h2 className="text-2xl md:text-3xl font-black text-[#1C1C2E] mb-10" style={{ letterSpacing: '-0.02em' }}>What our buyers say</h2>
+          <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Testimonials</p>
+          <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E] mb-10" style={{ letterSpacing: '-0.02em' }}>What our buyers say</h2>
           <div className="grid md:grid-cols-3 gap-6">
             {TESTIMONIALS.map(t => (
               <div key={t.name} className="border border-[#E5E7EB] p-6 flex flex-col">
                 <Stars count={t.stars} />
-                <p className="text-[#4B5563] text-sm leading-relaxed mt-4 flex-1">"{t.text}"</p>
+                <p className="text-[#4B5563] text-base leading-relaxed mt-4 flex-1">"{t.text}"</p>
                 <div className="mt-6 pt-4 border-t border-[#F3F4F6]">
-                  <p className="text-sm font-semibold text-[#1C1C2E]">{t.name}</p>
+                  <p className="text-base font-semibold text-[#1C1C2E]">{t.name}</p>
                   <p className="text-xs text-[#9CA3AF] mt-0.5">{t.role} · {t.location}</p>
                 </div>
               </div>
@@ -897,9 +897,9 @@ export default function SpringsClient() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-16">
             <div>
-              <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Contact Us</p>
+              <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Contact Us</p>
               <h2 className="text-3xl font-black text-[#1C1C2E] mb-4" style={{ letterSpacing: '-0.02em' }}>Speak with a Property Advisor</h2>
-              <p className="text-[#6B7280] text-sm leading-relaxed mb-8">
+              <p className="text-[#6B7280] text-lg leading-relaxed mb-8">
                 We offer the same pricing as the developer — with no additional cost to you. We provide personalised site visit coordination, complete documentation support, home loan tie-ups, and dedicated relationship management through possession.
               </p>
               <div className="space-y-4">
@@ -909,7 +909,7 @@ export default function SpringsClient() {
                   </div>
                   <div>
                     <p className="text-xs text-[#9CA3AF]">Call directly</p>
-                    <p className="text-sm font-semibold">{PHONE_DISPLAY}</p>
+                    <p className="text-base font-semibold">{PHONE_DISPLAY}</p>
                   </div>
                 </a>
                 <a href={WHATSAPP} target="_blank" rel="noreferrer" className="flex items-center gap-3 text-[#1C1C2E] hover:text-[#25D366] transition-colors group">
@@ -918,7 +918,7 @@ export default function SpringsClient() {
                   </div>
                   <div>
                     <p className="text-xs text-[#9CA3AF]">WhatsApp</p>
-                    <p className="text-sm font-semibold">Send a message</p>
+                    <p className="text-base font-semibold">Send a message</p>
                   </div>
                 </a>
               </div>
@@ -935,8 +935,8 @@ export default function SpringsClient() {
       {/* ── FAQ ──────────────────────────────────────────────────────────────── */}
       <section className="bg-white py-20">
         <div className="max-w-[800px] mx-auto px-6">
-          <p className="text-xs uppercase tracking-widest text-[#2d3791] font-semibold mb-3">FAQs</p>
-          <h2 className="text-2xl md:text-3xl font-black text-[#1C1C2E] mb-10" style={{ letterSpacing: '-0.02em' }}>Frequently Asked Questions</h2>
+          <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">FAQs</p>
+          <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E] mb-10" style={{ letterSpacing: '-0.02em' }}>Frequently Asked Questions</h2>
           {FAQS.map(f => <FAQItem key={f.q} q={f.q} a={f.a} />)}
         </div>
       </section>
@@ -955,15 +955,15 @@ export default function SpringsClient() {
               <p className="text-[#6B7280] text-xs leading-relaxed">By Sattva Group · Kanakapura Road, Bangalore</p>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-widest text-[#6B7280] font-semibold mb-3">Project</p>
-              <p className="text-sm text-[#9CA3AF]">Sattva Springs</p>
-              <p className="text-sm text-[#9CA3AF]">Kanakapura Road, Bangalore</p>
+              <p className="text-sm uppercase tracking-widest text-[#6B7280] font-semibold mb-3">Project</p>
+              <p className="text-base text-[#9CA3AF]">Sattva Springs</p>
+              <p className="text-base text-[#9CA3AF]">Kanakapura Road, Bangalore</p>
               <p className="text-xs text-[#6B7280] mt-2">RERA: {RERA}</p>
             </div>
             <div>
-              <p className="text-xs uppercase tracking-widest text-[#6B7280] font-semibold mb-3">Contact</p>
-              <a href={PHONE_LINK} className="text-sm text-[#9CA3AF] hover:text-white transition-colors block mb-1">{PHONE_DISPLAY}</a>
-              <a href={WHATSAPP} target="_blank" rel="noreferrer" className="text-sm text-[#9CA3AF] hover:text-white transition-colors">WhatsApp</a>
+              <p className="text-sm uppercase tracking-widest text-[#6B7280] font-semibold mb-3">Contact</p>
+              <a href={PHONE_LINK} className="text-base text-[#9CA3AF] hover:text-white transition-colors block mb-1">{PHONE_DISPLAY}</a>
+              <a href={WHATSAPP} target="_blank" rel="noreferrer" className="text-base text-[#9CA3AF] hover:text-white transition-colors">WhatsApp</a>
             </div>
           </div>
           <div className="border-t border-white/5 pt-8">
@@ -989,7 +989,7 @@ export default function SpringsClient() {
               <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
               Call Us
             </a>
-            <button onClick={() => setMobileForm(true)} className="flex-1 bg-[#2d3791] text-white py-4 text-sm font-semibold">
+            <button onClick={() => setMobileForm(true)} className="flex-1 bg-[#2d3791] text-white py-4 text-base font-semibold">
               Schedule a Visit
             </button>
           </div>
