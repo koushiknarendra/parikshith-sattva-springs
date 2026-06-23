@@ -35,12 +35,12 @@ const AMENITY_GROUPS = [
 ]
 
 const LOCATION_HIGHLIGHTS = [
-  { place: 'Art of Living International Centre', dist: '2.2 km' },
-  { place: 'Dayananda Sagar Academy', dist: '1 km' },
-  { place: 'NICE Ring Road', dist: '5 km' },
-  { place: 'Silk Institute Metro (Green Line)', dist: '6 km' },
-  { place: 'JP Nagar / Jayanagar', dist: '25 – 30 min' },
-  { place: 'Electronic City via NICE Road', dist: '35 – 40 min' },
+  { place: 'Art of Living International Centre', dist: '2.2 km', type: 'landmark' },
+  { place: 'Dayananda Sagar Academy', dist: '1 km', type: 'school' },
+  { place: 'NICE Ring Road', dist: '5 km', type: 'road' },
+  { place: 'Silk Institute Metro (Green Line)', dist: '6 km', type: 'metro' },
+  { place: 'JP Nagar / Jayanagar', dist: '25 – 30 min', type: 'city' },
+  { place: 'Electronic City via NICE Road', dist: '35 – 40 min', type: 'office' },
 ]
 
 const SPECS = [
@@ -116,6 +116,41 @@ const FAQS = [
   { q: 'Is there any additional cost when buying through our channel partner?',
     a: 'None. We offer the same pricing as the developer — the buyer pays nothing extra. What you gain is personalised advisory, documentation support, home loan facilitation, and dedicated post-booking service.' },
 ]
+
+// ─── LOCATION ICON ───────────────────────────────────────────────────────────
+function LocationIcon({ type }: { type: string }) {
+  const cls = 'w-4 h-4 text-[#2d3791]'
+  if (type === 'landmark') return (
+    <svg className={cls} fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253M3 12a8.959 8.959 0 01.284-2.253" />
+    </svg>
+  )
+  if (type === 'school') return (
+    <svg className={cls} fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+    </svg>
+  )
+  if (type === 'road') return (
+    <svg className={cls} fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+    </svg>
+  )
+  if (type === 'metro') return (
+    <svg className={cls} fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+    </svg>
+  )
+  if (type === 'city') return (
+    <svg className={cls} fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 21h19.5m-18-18v18m10.5-18v18m6-13.5V21M6.75 6.75h.75m-.75 3h.75m-.75 3h.75m3-6h.75m-.75 3h.75m-.75 3h.75M6.75 21v-3.375c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21M3 3h12m-.75 4.5H21m-3.75 3.75h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008zm0 3h.008v.008h-.008v-.008z" />
+    </svg>
+  )
+  return (
+    <svg className={cls} fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+      <path strokeLinecap="round" strokeLinejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 00.75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 00-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0112 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 01-.673-.38m0 0A2.18 2.18 0 013 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 013.413-.387m7.5 0V5.25A2.25 2.25 0 0013.5 3h-3a2.25 2.25 0 00-2.25 2.25v.894m7.5 0a48.667 48.667 0 00-7.5 0M12 12.75h.008v.008H12v-.008z" />
+    </svg>
+  )
+}
 
 // ─── BUILDING ICON ───────────────────────────────────────────────────────────
 function BuildingIcon({ className = '' }: { className?: string }) {
@@ -293,6 +328,7 @@ export default function SpringsClient() {
   const [mounted, setMounted]       = useState(false)
   const [slideIndex, setSlideIndex] = useState(0)
   const [lightbox, setLightbox] = useState<string | null>(null)
+  const [videoPlaying, setVideoPlaying] = useState(false)
   const formRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => { setMounted(true) }, [])
@@ -338,136 +374,127 @@ export default function SpringsClient() {
       </header>
 
       {/* ── HERO ─────────────────────────────────────────────────────────────── */}
-      <section className="flex flex-col md:flex-row" style={{ minHeight: 'calc(100vh - 68px)' }}>
+      <section className="relative overflow-hidden" style={{ minHeight: 'calc(100vh - 68px)' }}>
 
-        {/* Mobile-only image — shown above the content block */}
-        <div className="md:hidden relative w-full overflow-hidden" style={{ height: '58vw', minHeight: 200, maxHeight: 300 }}>
+        {/* Full-bleed slideshow */}
+        <div className="absolute inset-0">
           {HERO_IMAGES.map((img, i) => (
             <Image key={img.src} src={img.src} alt={img.alt}
-              fill sizes="(max-width: 768px) 100vw, 56vw"
+              fill sizes="100vw"
               className="object-cover object-center"
               priority={i === 0}
-              style={{ opacity: i === slideIndex ? 1 : 0, transition: 'opacity 1s ease' }} />
+              style={{ opacity: i === slideIndex ? 1 : 0, transition: 'opacity 1.2s ease' }} />
           ))}
-          {/* Bottom fade into dark panel */}
-          <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-[#0e1830] to-transparent" />
-          {/* Dot indicators */}
-          <div className="absolute bottom-3 left-0 right-0 flex justify-center gap-1.5">
-            {HERO_IMAGES.map((_, i) => (
-              <button key={i} onClick={() => setSlideIndex(i)} className="rounded-full transition-all"
-                style={{ width: i === slideIndex ? 20 : 6, height: 6, background: i === slideIndex ? '#afd23a' : 'rgba(255,255,255,0.4)' }} />
-            ))}
+        </div>
+
+        {/* Directional gradient overlays */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+
+        {/* Content */}
+        <div className="relative z-10 flex items-center" style={{ minHeight: 'calc(100vh - 68px)' }}>
+          <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12 py-14">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-10">
+
+              {/* Left: headline + stats + CTAs */}
+              <div className="flex-1">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#afd23a] mb-5">
+                  By Sattva Group · Kanakapura Road, Bangalore
+                </p>
+                <h1 className="mb-6">
+                  <span className="block font-light tracking-[0.22em] uppercase text-white/60 mb-1"
+                    style={{ fontSize: 'clamp(0.85rem, 1.8vw, 1.2rem)', fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                    Sattva
+                  </span>
+                  <span className="block text-white leading-none"
+                    style={{ fontSize: 'clamp(3.75rem, 9.5vw, 9rem)', fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                    Springs
+                  </span>
+                </h1>
+                <div className="w-10 h-px bg-[#afd23a] mb-6" />
+                <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
+                  Magnificent Luxury Row Villas for Sophisticated Living.<br className="hidden md:block" />
+                  Ideal location on Kanakapura Road, South Bengaluru.
+                </p>
+
+                {/* Key stats */}
+                <div className="flex flex-wrap gap-x-7 gap-y-4 mb-9">
+                  {[
+                    { label: 'Total Villas', value: '66 Units' },
+                    { label: 'Land Area',    value: '5.5 Acres' },
+                    { label: 'Villa Size',   value: '2,798 – 3,822 sq ft' },
+                    { label: 'Possession',   value: 'Sep 2027' },
+                  ].map(s => (
+                    <div key={s.label}>
+                      <p className="text-[9px] uppercase tracking-widest text-white/35 mb-1">{s.label}</p>
+                      <p className="text-white font-semibold text-sm">{s.value}</p>
+                    </div>
+                  ))}
+                </div>
+
+                {/* CTAs */}
+                <div className="flex flex-wrap gap-3">
+                  <button onClick={scrollToForm}
+                    className="bg-[#afd23a] hover:bg-[#9ebe2f] text-[#0e1830] font-bold px-7 py-3.5 rounded-sm text-sm tracking-wide transition-colors">
+                    Schedule a Site Visit
+                  </button>
+                  <a href={PHONE_LINK}
+                    className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 text-white font-semibold px-7 py-3.5 rounded-sm text-sm tracking-wide transition-colors">
+                    <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                    {PHONE_DISPLAY}
+                  </a>
+                </div>
+              </div>
+
+              {/* Right: form card — desktop only */}
+              <div className="hidden md:block w-[360px] shrink-0">
+                <div className="bg-white p-7" style={{ boxShadow: '0 32px 80px rgba(0,0,0,0.5)' }}>
+                  <p className="text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Get in Touch</p>
+                  <h3 className="text-base font-bold text-[#1C1C2E] mb-5">Request a Callback</h3>
+                  <EnquiryForm source="hero" ctaLabel="Request a Callback" />
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
 
-        {/* LEFT: dark info panel */}
-        <div className="relative z-10 w-full md:w-[44%] bg-[#0e1830] flex flex-col justify-between px-8 py-10 md:px-14 md:py-14">
-
-          {/* Main content */}
-          <div className="flex-1 flex flex-col justify-center">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#afd23a] mb-5">
-              By Sattva Group
-            </p>
-            <h1 className="text-[56px] md:text-[68px] font-black text-white leading-none mb-4"
-              style={{ letterSpacing: '-0.03em' }}>
-              SATTVA<br />SPRINGS
-            </h1>
-            <p className="text-white/50 text-sm mb-8 leading-relaxed">
-              Exclusive 4 BHK Row Villas · Kanakapura Road, Bangalore
-            </p>
-
-            <div className="w-12 h-px bg-[#afd23a] mb-8" />
-
-            {/* Spec grid */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-5 mb-10">
-              {[
-                { label: 'Total Villas', value: '66 Units' },
-                { label: 'Land Area',    value: '5.5 Acres' },
-                { label: 'Villa Size',   value: '2,798 – 3,822 sq ft' },
-                { label: 'Possession',  value: 'Sep 2027' },
-              ].map(s => (
-                <div key={s.label}>
-                  <p className="text-[10px] uppercase tracking-wider text-white/35 mb-1">{s.label}</p>
-                  <p className="text-white font-semibold text-sm">{s.value}</p>
-                </div>
+        {/* Bottom strip: urgency + slide dots */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-5"
+          style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 100%)', paddingTop: 40 }}>
+          <div className="max-w-[1200px] mx-auto flex items-center justify-between gap-4">
+            <div className="flex items-center gap-2.5">
+              <span className="w-2 h-2 rounded-full bg-[#afd23a] animate-pulse shrink-0" />
+              <p className="text-white/70 text-xs font-medium">Only 5 villa configurations available — Types A, B, D, E & F</p>
+            </div>
+            <div className="flex items-center gap-1.5">
+              {HERO_IMAGES.map((_, i) => (
+                <button key={i} onClick={() => setSlideIndex(i)}
+                  className="rounded-full transition-all"
+                  style={{
+                    width:  i === slideIndex ? 20 : 6,
+                    height: 6,
+                    background: i === slideIndex ? '#afd23a' : 'rgba(255,255,255,0.35)',
+                  }} />
               ))}
             </div>
-
-          </div>
-
-          {/* Phone CTA bar */}
-          <div className="mt-8">
-            <a href={PHONE_LINK}
-              className="flex items-center gap-4 bg-[#afd23a] hover:bg-[#9ebe2f] rounded-sm px-5 py-4 transition-colors">
-              <div className="w-10 h-10 rounded-full bg-[#0e1830]/15 flex items-center justify-center shrink-0">
-                <svg className="w-5 h-5 text-[#0e1830]" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
-                </svg>
-              </div>
-              <div>
-                <p className="text-[10px] font-medium text-[#0e1830]/60 uppercase tracking-wider leading-none mb-1">Call us directly</p>
-                <p className="text-[#0e1830] font-black text-2xl leading-none tracking-wide">{PHONE_DISPLAY}</p>
-              </div>
-            </a>
-            <div className="flex items-center justify-center gap-1.5 mt-3">
-              <svg className="w-3 h-3 text-white/30 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-              </svg>
-              <p className="text-[10px] text-white/30">No spam calls · One advisor · RERA {RERA.slice(0, 12)}…</p>
-            </div>
           </div>
         </div>
 
-        {/* RIGHT: slideshow — desktop only */}
-        <div className="hidden md:block flex-1 relative overflow-hidden">
-          {/* Image stack — fade between slides */}
-          {HERO_IMAGES.map((img, i) => (
-            <Image key={img.src} src={img.src} alt={img.alt}
-              fill sizes="(max-width: 768px) 100vw, 56vw"
-              className="object-cover object-center"
-              priority={i === 0}
-              style={{ opacity: i === slideIndex ? 1 : 0, transition: 'opacity 1s ease' }} />
-          ))}
-
-          {/* Left blend into dark panel */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#0e1830]/40 via-[#0e1830]/10 to-transparent" />
-
-          {/* Circular price badge */}
-          <div className="absolute bottom-10 right-10 w-[130px] h-[130px] rounded-full flex flex-col items-center justify-center text-center"
-            style={{ background: '#2d3791', boxShadow: '0 0 0 4px #afd23a, 0 24px 48px rgba(0,0,0,0.5)' }}>
-            <p className="text-[9px] uppercase tracking-wider text-white/55 leading-none mb-1">Starting @</p>
-            <p className="text-[#afd23a] font-black text-[28px] leading-none">₹4.79</p>
-            <p className="text-white font-bold text-xs leading-none mt-1">Crore*</p>
-          </div>
-
-          {/* RERA tag — top right */}
-          <div className="absolute top-6 right-6 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-sm border border-white/10">
-            <p className="text-[9px] uppercase tracking-wider text-white/50 leading-none mb-1">RERA Registered</p>
-            <p className="text-[10px] text-white/80 font-mono leading-none">{RERA.slice(0, 26)}…</p>
-          </div>
-
-          {/* Bottom bar: urgency + slide dots */}
-          <div className="absolute bottom-0 left-0 right-0 py-5 px-8"
-            style={{ background: 'linear-gradient(to top, rgba(14,24,48,0.8) 0%, transparent 100%)' }}>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <span className="w-2 h-2 rounded-full bg-[#afd23a] animate-pulse shrink-0" />
-                <p className="text-white/80 text-sm font-medium">Only 4 villa configurations available — Types C, D, E & F</p>
-              </div>
-              <div className="flex items-center gap-1.5">
-                {HERO_IMAGES.map((_, i) => (
-                  <button key={i} onClick={() => setSlideIndex(i)}
-                    className="rounded-full transition-all"
-                    style={{
-                      width:  i === slideIndex ? 20 : 6,
-                      height: 6,
-                      background: i === slideIndex ? '#afd23a' : 'rgba(255,255,255,0.35)',
-                    }} />
-                ))}
-              </div>
-            </div>
-          </div>
+        {/* RERA badge — top right */}
+        <div className="absolute top-5 right-5 z-10 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-sm border border-white/10">
+          <p className="text-[9px] uppercase tracking-wider text-white/50 leading-none mb-1">RERA Registered</p>
+          <p className="text-[10px] text-white/80 font-mono leading-none">{RERA.slice(0, 26)}…</p>
         </div>
+
+        {/* Price badge — mobile only */}
+        <div className="absolute bottom-14 right-4 z-10 md:hidden w-[100px] h-[100px] rounded-full flex flex-col items-center justify-center text-center"
+          style={{ background: '#2d3791', boxShadow: '0 0 0 3px #afd23a, 0 16px 40px rgba(0,0,0,0.5)' }}>
+          <p className="text-[8px] uppercase tracking-wider text-white/55 leading-none mb-1">Starting @</p>
+          <p className="text-[#afd23a] font-black text-xl leading-none">₹4.79</p>
+          <p className="text-white font-bold text-[9px] leading-none mt-1">Crore*</p>
+        </div>
+
       </section>
 
       {/* ── ENQUIRY FORM ─────────────────────────────────────────────────────── */}
@@ -612,7 +639,64 @@ export default function SpringsClient() {
               </div>
             </div>
           </div>
-          <p className="text-xs text-white/30 mt-3">Actual project images. Contact us for the complete walkthrough video.</p>
+          <p className="text-xs text-white/30 mt-3">Actual project images. Watch the full walkthrough video below.</p>
+        </div>
+      </section>
+
+      {/* ── VIDEO WALKTHROUGH ────────────────────────────────────────────────── */}
+      <section className="bg-[#0e1830] py-20">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <p className="text-sm uppercase tracking-widest text-[#afd23a] font-semibold mb-3">Project Walkthrough</p>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-3 mb-8">
+            <h2 className="text-3xl md:text-4xl font-black text-white" style={{ letterSpacing: '-0.02em' }}>
+              Experience Sattva Springs
+            </h2>
+            <p className="text-white/50 text-base shrink-0">See the spaces, the lifestyle — in minutes.</p>
+          </div>
+          <div className="relative rounded-sm overflow-hidden bg-black" style={{ paddingBottom: '56.25%' }}>
+            {videoPlaying ? (
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/vNfCVCS4eIM?autoplay=1&rel=0&modestbranding=1"
+                title="Sattva Springs Project Walkthrough"
+                allow="autoplay; encrypted-media; picture-in-picture"
+                allowFullScreen
+              />
+            ) : (
+              <button
+                onClick={() => setVideoPlaying(true)}
+                className="absolute inset-0 w-full h-full group"
+                aria-label="Play project walkthrough video"
+              >
+                <img
+                  src="https://img.youtube.com/vi/vNfCVCS4eIM/maxresdefault.jpg"
+                  alt="Sattva Springs Project Walkthrough"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/45 group-hover:bg-black/30 transition-colors" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-20 h-20 bg-white/90 group-hover:bg-white rounded-full flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110">
+                    <svg className="w-8 h-8 text-[#2d3791] ml-1" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="absolute bottom-4 left-4 bg-black/60 backdrop-blur-sm px-3 py-1.5 rounded-sm">
+                  <p className="text-white text-xs font-medium">▶ Play project walkthrough</p>
+                </div>
+              </button>
+            )}
+          </div>
+          <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
+            <button onClick={scrollToForm}
+              className="bg-[#afd23a] hover:bg-[#9ebe2f] text-[#0e1830] font-bold px-8 py-3.5 rounded-sm text-base transition-colors tracking-wide">
+              Schedule a Site Visit
+            </button>
+            <a href={WHATSAPP} target="_blank" rel="noreferrer"
+              className="flex items-center justify-center gap-2 border border-white/20 hover:border-white/40 text-white font-semibold px-8 py-3.5 rounded-sm text-base transition-colors">
+              Download Brochure via WhatsApp
+            </a>
+          </div>
         </div>
       </section>
 
@@ -794,26 +878,29 @@ export default function SpringsClient() {
           <p className="text-sm uppercase tracking-widest text-[#2d3791] font-semibold mb-3">Location</p>
           <h2 className="text-3xl md:text-4xl font-black text-[#1C1C2E] mb-2" style={{ letterSpacing: '-0.02em' }}>Kanakapura Road, South Bangalore</h2>
           <p className="text-[#6B7280] text-lg mb-10">129 Kanakapura Road, Badamanavarathekaval, Bengaluru 560082 — directly opposite the Art of Living International Centre.</p>
-          <div className="grid md:grid-cols-2 gap-10">
-            <div className="space-y-px border border-[#E5E7EB] rounded-sm overflow-hidden">
-              {LOCATION_HIGHLIGHTS.map((l, i) => (
-                <div key={l.place} className={`flex items-center justify-between px-5 py-3.5 ${i % 2 === 0 ? 'bg-white' : 'bg-[#F9FAFB]'}`}>
-                  <p className="text-base text-[#4B5563]">{l.place}</p>
-                  <p className="text-sm font-semibold text-[#2d3791] shrink-0 ml-4">{l.dist}</p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-10">
+            {LOCATION_HIGHLIGHTS.map(l => (
+              <div key={l.place} className="bg-white border border-[#E5E7EB] rounded-sm p-4 flex items-start gap-3 hover:border-[#2d3791]/30 transition-colors">
+                <div className="w-9 h-9 bg-[#2d3791]/8 rounded-sm flex items-center justify-center shrink-0">
+                  <LocationIcon type={l.type} />
                 </div>
-              ))}
-            </div>
-            <div className="rounded-sm overflow-hidden border border-[#E5E7EB] min-h-[280px] md:min-h-[320px]">
-              <iframe
-                src="https://maps.google.com/maps?q=SATTVA+SPRINGS,+129,+Badamanavarathekaval,+Bengaluru,+Karnataka+560082&ftid=0x3bae4100656ade8b:0xc2bb9b7a49219a94&output=embed&z=16"
-                width="100%"
-                height="100%"
-                style={{ border: 0, minHeight: 280, display: 'block' }}
-                allowFullScreen
-                loading="lazy"
-                title="Sattva Springs – Kanakapura Road, Bangalore"
-              />
-            </div>
+                <div className="min-w-0">
+                  <p className="text-base font-bold text-[#2d3791] leading-none">{l.dist}</p>
+                  <p className="text-xs text-[#6B7280] mt-1 leading-relaxed">{l.place}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="rounded-sm overflow-hidden border border-[#E5E7EB] h-[300px] md:h-[380px]">
+            <iframe
+              src="https://maps.google.com/maps?q=SATTVA+SPRINGS,+129,+Badamanavarathekaval,+Bengaluru,+Karnataka+560082&ftid=0x3bae4100656ade8b:0xc2bb9b7a49219a94&output=embed&z=16"
+              width="100%"
+              height="100%"
+              style={{ border: 0, display: 'block' }}
+              allowFullScreen
+              loading="lazy"
+              title="Sattva Springs – Kanakapura Road, Bangalore"
+            />
           </div>
         </div>
       </section>
