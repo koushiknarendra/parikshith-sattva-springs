@@ -387,74 +387,59 @@ export default function SpringsClient() {
           ))}
         </div>
 
-        {/* Directional gradient overlays */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+        {/* Gradient overlays — bottom-heavy, light on right so image shows through */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/65 via-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
 
-        {/* Content */}
-        <div className="relative z-10 flex items-center" style={{ minHeight: 'calc(100vh - 68px)' }}>
-          <div className="w-full max-w-[1200px] mx-auto px-6 md:px-12 py-14">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-10">
+        {/* Content — anchored to bottom-left */}
+        <div className="relative z-10 flex items-end" style={{ minHeight: 'calc(100vh - 68px)' }}>
+          <div className="w-full max-w-[1200px] mx-auto px-6 md:px-14 pb-20 md:pb-24">
+            <div className="max-w-2xl">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#afd23a] mb-4">
+                By Sattva Group · Kanakapura Road, Bangalore
+              </p>
+              <h1 className="mb-5">
+                <span className="block font-light tracking-[0.22em] uppercase text-white/60 mb-1"
+                  style={{ fontSize: 'clamp(0.85rem, 1.8vw, 1.2rem)', fontFamily: 'Georgia, "Times New Roman", serif' }}>
+                  Sattva
+                </span>
+                <span className="block text-white leading-none"
+                  style={{ fontSize: 'clamp(3.75rem, 10vw, 9.5rem)', fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 700, letterSpacing: '-0.02em' }}>
+                  Springs
+                </span>
+              </h1>
+              <p className="text-white/65 text-base md:text-lg leading-relaxed mb-8">
+                Magnificent Luxury Row Villas for Sophisticated Living.<br className="hidden md:block" />
+                Ideal location on Kanakapura Road, South Bengaluru.
+              </p>
 
-              {/* Left: headline + stats + CTAs */}
-              <div className="flex-1">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#afd23a] mb-5">
-                  By Sattva Group · Kanakapura Road, Bangalore
-                </p>
-                <h1 className="mb-6">
-                  <span className="block font-light tracking-[0.22em] uppercase text-white/60 mb-1"
-                    style={{ fontSize: 'clamp(0.85rem, 1.8vw, 1.2rem)', fontFamily: 'Georgia, "Times New Roman", serif' }}>
-                    Sattva
-                  </span>
-                  <span className="block text-white leading-none"
-                    style={{ fontSize: 'clamp(3.75rem, 9.5vw, 9rem)', fontFamily: 'Georgia, "Times New Roman", serif', fontWeight: 700, letterSpacing: '-0.02em' }}>
-                    Springs
-                  </span>
-                </h1>
-                <div className="w-10 h-px bg-[#afd23a] mb-6" />
-                <p className="text-white/60 text-base md:text-lg leading-relaxed mb-8 max-w-lg">
-                  Magnificent Luxury Row Villas for Sophisticated Living.<br className="hidden md:block" />
-                  Ideal location on Kanakapura Road, South Bengaluru.
-                </p>
-
-                {/* Key stats */}
-                <div className="flex flex-wrap gap-x-7 gap-y-4 mb-9">
-                  {[
-                    { label: 'Total Villas', value: '66 Units' },
-                    { label: 'Land Area',    value: '5.5 Acres' },
-                    { label: 'Villa Size',   value: '2,798 – 3,822 sq ft' },
-                    { label: 'Possession',   value: 'Sep 2027' },
-                  ].map(s => (
-                    <div key={s.label}>
-                      <p className="text-[9px] uppercase tracking-widest text-white/35 mb-1">{s.label}</p>
-                      <p className="text-white font-semibold text-sm">{s.value}</p>
-                    </div>
-                  ))}
-                </div>
-
-                {/* CTAs */}
-                <div className="flex flex-wrap gap-3">
-                  <button onClick={scrollToForm}
-                    className="bg-[#afd23a] hover:bg-[#9ebe2f] text-[#0e1830] font-bold px-7 py-3.5 rounded-sm text-sm tracking-wide transition-colors">
-                    Schedule a Site Visit
-                  </button>
-                  <a href={PHONE_LINK}
-                    className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 text-white font-semibold px-7 py-3.5 rounded-sm text-sm tracking-wide transition-colors">
-                    <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
-                    {PHONE_DISPLAY}
-                  </a>
-                </div>
+              {/* Key stats */}
+              <div className="flex flex-wrap gap-x-8 gap-y-3 mb-8">
+                {[
+                  { label: 'Total Villas', value: '66 Units' },
+                  { label: 'Land Area',    value: '5.5 Acres' },
+                  { label: 'Villa Size',   value: '2,798 – 3,822 sq ft' },
+                  { label: 'Possession',   value: 'Sep 2027' },
+                ].map(s => (
+                  <div key={s.label}>
+                    <p className="text-[9px] uppercase tracking-widest text-white/35 mb-1">{s.label}</p>
+                    <p className="text-white font-semibold text-sm">{s.value}</p>
+                  </div>
+                ))}
               </div>
 
-              {/* Right: form card — desktop only */}
-              <div className="hidden md:block w-[360px] shrink-0">
-                <div className="bg-white p-7" style={{ boxShadow: '0 32px 80px rgba(0,0,0,0.5)' }}>
-                  <p className="text-[10px] uppercase tracking-widest text-[#9CA3AF] mb-1">Get in Touch</p>
-                  <h3 className="text-base font-bold text-[#1C1C2E] mb-5">Request a Callback</h3>
-                  <EnquiryForm source="hero" ctaLabel="Request a Callback" />
-                </div>
+              {/* CTAs */}
+              <div className="flex flex-wrap gap-3">
+                <button onClick={scrollToForm}
+                  className="bg-[#afd23a] hover:bg-[#9ebe2f] text-[#0e1830] font-bold px-7 py-3.5 rounded-sm text-sm tracking-wide transition-colors">
+                  Schedule a Site Visit
+                </button>
+                <a href={PHONE_LINK}
+                  className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-sm border border-white/25 text-white font-semibold px-7 py-3.5 rounded-sm text-sm tracking-wide transition-colors">
+                  <svg className="w-4 h-4 shrink-0" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" /></svg>
+                  {PHONE_DISPLAY}
+                </a>
               </div>
-
             </div>
           </div>
         </div>
