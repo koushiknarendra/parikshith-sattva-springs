@@ -386,9 +386,9 @@ export default function SpringsClient() {
           ))}
         </div>
 
-        {/* Gradient overlays — very light, image is the star */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/10 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+        {/* Local overlay — only behind text area, image stays clean elsewhere */}
+        <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-black/55 via-black/20 to-transparent pointer-events-none" />
+        <div className="hidden md:block absolute inset-y-0 left-0 w-1/2 bg-gradient-to-r from-black/30 to-transparent pointer-events-none" />
 
         {/* Content — anchored to bottom-left, compact */}
         <div className="relative z-10 flex items-end" style={{ minHeight: 'calc(100vh - 68px)' }}>
@@ -427,37 +427,22 @@ export default function SpringsClient() {
           </div>
         </div>
 
-        {/* Bottom strip: urgency + slide dots */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 px-6 md:px-12 pb-4"
-          style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%)', paddingTop: 32 }}>
-          <div className="max-w-[1200px] mx-auto flex items-center justify-between gap-4">
-            <div className="flex items-center gap-2.5">
-              <span className="w-2 h-2 rounded-full bg-[#afd23a] animate-pulse shrink-0" />
-              <p className="text-white/70 text-xs font-medium">Only 5 villa configurations available — Types A, B, D, E & F</p>
-            </div>
-            <div className="flex items-center gap-1.5">
-              {HERO_IMAGES.map((_, i) => (
-                <button key={i} onClick={() => setSlideIndex(i)}
-                  className="rounded-full transition-all"
-                  style={{
-                    width:  i === slideIndex ? 20 : 6,
-                    height: 6,
-                    background: i === slideIndex ? '#afd23a' : 'rgba(255,255,255,0.35)',
-                  }} />
-              ))}
-            </div>
-          </div>
+        {/* Slide dots */}
+        <div className="absolute bottom-4 left-0 right-0 z-10 flex justify-center gap-1.5">
+          {HERO_IMAGES.map((_, i) => (
+            <button key={i} onClick={() => setSlideIndex(i)}
+              className="rounded-full transition-all"
+              style={{
+                width:  i === slideIndex ? 20 : 6,
+                height: 6,
+                background: i === slideIndex ? '#afd23a' : 'rgba(255,255,255,0.35)',
+              }} />
+          ))}
         </div>
 
-        {/* RERA badge — top right */}
-        <div className="absolute top-5 right-5 z-10 bg-black/40 backdrop-blur-sm px-3 py-2 rounded-sm border border-white/10">
-          <p className="text-[9px] uppercase tracking-wider text-white/50 leading-none mb-1">RERA Registered</p>
-          <p className="text-[10px] text-white/80 font-mono leading-none">{RERA.slice(0, 26)}…</p>
-        </div>
-
-        {/* Price badge — mobile only */}
-        <div className="absolute bottom-14 right-4 z-10 md:hidden w-[100px] h-[100px] rounded-full flex flex-col items-center justify-center text-center"
-          style={{ background: '#2d3791', boxShadow: '0 0 0 3px #afd23a, 0 16px 40px rgba(0,0,0,0.5)' }}>
+        {/* Price badge — mobile top-right */}
+        <div className="absolute top-4 right-4 z-10 md:hidden w-[88px] h-[88px] rounded-full flex flex-col items-center justify-center text-center"
+          style={{ background: '#2d3791', boxShadow: '0 0 0 3px #afd23a, 0 12px 32px rgba(0,0,0,0.4)' }}>
           <p className="text-[8px] uppercase tracking-wider text-white/55 leading-none mb-1">Starting @</p>
           <p className="text-[#afd23a] font-black text-xl leading-none">₹4.79</p>
           <p className="text-white font-bold text-[9px] leading-none mt-1">Crore*</p>
